@@ -1,13 +1,13 @@
  import { TSOFAIllegalParameter } from "./TSOFAIllegalParameter";
  import { TSOFAInternalError } from "./TSOFAInternalError";
     /**
-     * Java implementation of Standards of Fundamental Astronomy. <a href="http://www.iausofa.org/">http://www.iausofa.org/</a>
+     * Typescript implementation of Standards of Fundamental Astronomy. <a href="http://www.iausofa.org/">http://www.iausofa.org/</a>
      * 
-     * This code has been created by hand translating the official C version.
+     * This code has been created by hand translating from JSOFA.
      * 
-     * @author Paul Harrison (paul.harrison@manchester.ac.uk) 02 Apr 2014
-     * @version TSOFA Release 20180130
-     * @since 26 Jan 2010
+     * @author Paul Harrison (paul.harrison@manchester.ac.uk) 08 Jan 2024
+     * @version TSOFA Release 18
+     * @since 8 Jan 2024
      * @class
      */
     export class TSOFA {
@@ -22,7 +22,7 @@
         /**
          * TSOFA release {@value}
          */
-        public static TSOFA_RELEASE: string = "20210512b";
+        public static TSOFA_RELEASE: string = "18";
 
         /**
          * tracked IAU SOFA revision {@value}.
@@ -32,7 +32,7 @@
         /**
          * Release year for this version of jauDat {@value}
          */
-        public static IYV: number = 2021;
+        public static IYV: number = 2023;
 
         /**
          * The latest confirmed omission of a leap second form IERS
@@ -179,7 +179,7 @@
 
         static TANGENT_TINY: number = 1.0E-6;
 
-        static DBL_EPSILON: number; public static DBL_EPSILON_$LI$(): number { TSOFA.__static_initialize(); if (TSOFA.DBL_EPSILON == null) { TSOFA.DBL_EPSILON = /* ulp */((x) => { let buffer = new ArrayBuffer(8); let dataView = new DataView(buffer); dataView.setFloat64(0, x); let first = dataView.getUint32(0); let second = dataView.getUint32(4); let rawExponent = first & 0x7ff00000; if (rawExponent == 0x7ff00000) { dataView.setUint32(0,first & 0x7fffffff); } else if (rawExponent == 0) { dataView.setUint32(4,1); dataView.setUint32(0,0); } else if (rawExponent >= (52 << 20) + 0x00100000) { dataView.setUint32(0,rawExponent - (52 << 20)); dataView.setUint32(4,0); } else if (rawExponent >= (33 << 20)) { dataView.setUint32(0,1 << ((rawExponent - (33 << 20))  >>> 20 )); dataView.setUint32(4,0); } else { dataView.setUint32(4,1 << ((rawExponent - 0x00100000)  >>> 20)); dataView.setUint32(0,0); } return dataView.getFloat64(0); })(1.0); }  return TSOFA.DBL_EPSILON; }
+        static DBL_EPSILON: number; public static DBL_EPSILON_$LI$(): number { TSOFA.__static_initialize(); if (TSOFA.DBL_EPSILON == null) { TSOFA.DBL_EPSILON = /* ulp */((x) => { const buffer = new ArrayBuffer(8); const dataView = new DataView(buffer); dataView.setFloat64(0, x); let first = dataView.getUint32(0); let second = dataView.getUint32(4); let rawExponent = first & 0x7ff00000; if (rawExponent == 0x7ff00000) { dataView.setUint32(0,first & 0x7fffffff); } else if (rawExponent == 0) { dataView.setUint32(4,1); dataView.setUint32(0,0); } else if (rawExponent >= (52 << 20) + 0x00100000) { dataView.setUint32(0,rawExponent - (52 << 20)); dataView.setUint32(4,0); } else if (rawExponent >= (33 << 20)) { dataView.setUint32(0,1 << ((rawExponent - (33 << 20))  >>> 20 )); dataView.setUint32(4,0); } else { dataView.setUint32(4,1 << ((rawExponent - 0x00100000)  >>> 20)); dataView.setUint32(0,0); } return dataView.getFloat64(0); })(1.0); }  return TSOFA.DBL_EPSILON; }
 
         /**
          * dint(A) - truncate to nearest whole number towards zero (double)
