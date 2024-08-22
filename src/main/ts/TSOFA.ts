@@ -4685,7 +4685,7 @@
             wxp = TSOFA.jauPxp(pv5[0], s5h);
             vv = TSOFA.jauPpp(wxp, pv5[1]);
             pvh[1] = TSOFA.jauRxp(r5h, vv);
-            let cat: TSOFA.CatalogCoords = null;
+            let cat: TSOFA.CatalogCoords = null as any;
             try {
                 cat = TSOFA.jauPvstar(pvh);
             } catch(e) {
@@ -6105,7 +6105,7 @@
             wxp = TSOFA.jauPxp(pvh[0], sh);
             vv = TSOFA.jauPmp(pvh[1], wxp);
             pv5[1] = TSOFA.jauTrxp(r5h, vv);
-            let cat: TSOFA.CatalogCoords = null;
+            let cat: TSOFA.CatalogCoords = null as any;
             try {
                 cat = TSOFA.jauPvstar(pv5);
             } catch(e) {
@@ -20813,7 +20813,7 @@
                 if (this.iy === undefined) { this.iy = 0; }
                 if (this.im === undefined) { this.im = 0; }
                 if (this.id === undefined) { this.id = 0; }
-                if (this.ihmsf === undefined) { this.ihmsf = null; }
+                if (this.ihmsf === undefined) { this.ihmsf = null as any; }
                 this.iy = iy;
                 this.im = im;
                 this.id = id;
@@ -20830,8 +20830,8 @@
 
             c: number;
 
-            public constructor(nfa: number[], s: number, c: number) {
-                if (this.nfa === undefined) { this.nfa = null; }
+            public constructor(nfa: number[] , s: number, c: number) {
+                if (this.nfa === undefined) { this.nfa = null as any; }
                 if (this.s === undefined) { this.s = 0; }
                 if (this.c === undefined) { this.c = 0; }
                 this.nfa = nfa;
@@ -20938,7 +20938,7 @@
             public eo: number;
 
             public constructor(pos: TSOFA.SphericalCoordinate, eo: number) {
-                if (this.pos === undefined) { this.pos = null; }
+                if (this.pos === undefined) { this.pos = null as any; }
                 if (this.eo === undefined) { this.eo = 0; }
                 this.pos = pos;
                 this.eo = eo;
@@ -21478,7 +21478,7 @@
 
             public constructor(r: number, u: number[]) {
                 if (this.r === undefined) { this.r = 0; }
-                if (this.u === undefined) { this.u = null; }
+                if (this.u === undefined) { this.u = null as any; }
                 this.r = r;
                 this.u = u;
             }
@@ -21535,13 +21535,13 @@
             public rbpn: number[][];
 
             public constructor(dpsi: number, deps: number, epsa: number, rb: number[][], rp: number[][], rbp: number[][], rn: number[][], rbpn: number[][]) {
-                if (this.nut === undefined) { this.nut = null; }
+                if (this.nut === undefined) { this.nut = null as any; }
                 if (this.epsa === undefined) { this.epsa = 0; }
-                if (this.rb === undefined) { this.rb = null; }
-                if (this.rp === undefined) { this.rp = null; }
-                if (this.rbp === undefined) { this.rbp = null; }
-                if (this.rn === undefined) { this.rn = null; }
-                if (this.rbpn === undefined) { this.rbpn = null; }
+                if (this.rb === undefined) { this.rb = null as any; }
+                if (this.rp === undefined) { this.rp = null as any; }
+                if (this.rbp === undefined) { this.rbp = null as any; }
+                if (this.rn === undefined) { this.rn = null as any; }
+                if (this.rbpn === undefined) { this.rbpn = null as any; }
                 this.nut = new TSOFA.NutationTerms(dpsi, deps);
                 this.epsa = epsa;
                 this.rb = rb;
@@ -21641,8 +21641,8 @@
             public vel: TSOFA.SphericalPosition;
 
             public constructor(theta: number, phi: number, r: number, td: number, pd: number, rd: number) {
-                if (this.pos === undefined) { this.pos = null; }
-                if (this.vel === undefined) { this.vel = null; }
+                if (this.pos === undefined) { this.pos = null as any; }
+                if (this.vel === undefined) { this.vel = null as any; }
                 this.pos = new TSOFA.SphericalPosition(theta, phi, r);
                 this.vel = new TSOFA.SphericalPosition(td, pd, rd);
             }
@@ -21709,8 +21709,8 @@
             public rv: number;
 
             public constructor(ra: number, dec: number, pmr: number, pmd: number, px: number, rv: number) {
-                if (this.pos === undefined) { this.pos = null; }
-                if (this.pm === undefined) { this.pm = null; }
+                if (this.pos === undefined) { this.pos = null as any; }
+                if (this.pm === undefined) { this.pm = null as any; }
                 if (this.px === undefined) { this.px = 0; }
                 if (this.rv === undefined) { this.rv = 0; }
                 this.pos = new TSOFA.SphericalCoordinate(ra, dec);
@@ -21743,7 +21743,7 @@
             public s: number;
 
             public constructor(cip: TSOFA.CelestialIntermediatePole, s: number) {
-                if (this.cip === undefined) { this.cip = null; }
+                if (this.cip === undefined) { this.cip = null as any; }
                 if (this.s === undefined) { this.s = 0; }
                 this.cip = cip;
                 this.s = s;
@@ -21983,7 +21983,7 @@
             public eo: number;
 
             public constructor(op: TSOFA.ObservedPosition, eo: number) {
-                if (this.op === undefined) { this.op = null; }
+                if (this.op === undefined) { this.op = null as any; }
                 if (this.eo === undefined) { this.eo = 0; }
                 this.op = op;
                 this.eo = eo;
@@ -22091,19 +22091,19 @@
             public constructor(sol1?: any, sol2?: any, flag?: any) {
                 if (((sol1 != null && sol1 instanceof <any>TSOFA.SphericalCoordinate) || sol1 === null) && ((sol2 != null && sol2 instanceof <any>TSOFA.SphericalCoordinate) || sol2 === null) && ((typeof flag === 'number') || flag === null)) {
                     let __args = arguments;
-                    if (this.sol1 === undefined) { this.sol1 = null; } 
-                    if (this.sol2 === undefined) { this.sol2 = null; } 
+                    if (this.sol1 === undefined) { this.sol1 = null as any; } 
+                    if (this.sol2 === undefined) { this.sol2 = null as any; } 
                     if (this.nsolutions === undefined) { this.nsolutions = 0; } 
                     this.sol1 = sol1;
                     this.sol2 = sol2;
                     this.nsolutions = flag;
                 } else if (sol1 === undefined && sol2 === undefined && flag === undefined) {
                     let __args = arguments;
-                    if (this.sol1 === undefined) { this.sol1 = null; } 
-                    if (this.sol2 === undefined) { this.sol2 = null; } 
+                    if (this.sol1 === undefined) { this.sol1 = null as any; } 
+                    if (this.sol2 === undefined) { this.sol2 = null as any; } 
                     if (this.nsolutions === undefined) { this.nsolutions = 0; } 
-                    this.sol1 = null;
-                    this.sol2 = null;
+                    this.sol1 = null as any;
+                    this.sol2 = null as any;
                     this.nsolutions = 0;
                 } else throw new Error('invalid overload');
             }
@@ -22131,16 +22131,16 @@
             public constructor(dc1?: any, dc2?: any, nsolution?: any) {
                 if (((dc1 != null && dc1 instanceof <any>Array && (dc1.length == 0 || dc1[0] == null ||(typeof dc1[0] === 'number'))) || dc1 === null) && ((dc2 != null && dc2 instanceof <any>Array && (dc2.length == 0 || dc2[0] == null ||(typeof dc2[0] === 'number'))) || dc2 === null) && ((typeof nsolution === 'number') || nsolution === null)) {
                     let __args = arguments;
-                    if (this.dc1 === undefined) { this.dc1 = null; } 
-                    if (this.dc2 === undefined) { this.dc2 = null; } 
+                    if (this.dc1 === undefined) { this.dc1 = null as any; } 
+                    if (this.dc2 === undefined) { this.dc2 = null as any; } 
                     if (this.nsolution === undefined) { this.nsolution = 0; } 
                     this.dc1 = dc1;
                     this.dc2 = dc2;
                     this.nsolution = nsolution;
                 } else if (dc1 === undefined && dc2 === undefined && nsolution === undefined) {
                     let __args = arguments;
-                    if (this.dc1 === undefined) { this.dc1 = null; } 
-                    if (this.dc2 === undefined) { this.dc2 = null; } 
+                    if (this.dc1 === undefined) { this.dc1 = null as any; } 
+                    if (this.dc2 === undefined) { this.dc2 = null as any; } 
                     if (this.nsolution === undefined) { this.nsolution = 0; } 
                     this.nsolution = 0;
                 } else throw new Error('invalid overload');
