@@ -120,9 +120,9 @@ export class TSOFATest {
 
             @Test()
  public t_bp00() {
-            const rb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const rp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const rbp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rbp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             TSOFA.jauBp00(2400000.5, 50123.9999, rb, rp, rbp);
             this.vvd(rb[0][0], 0.9999999999999942, 1.0E-12, "jauBp00", "rb11");
             this.vvd(rb[0][1], -7.078279744199197E-8, 1.0E-16, "jauBp00", "rb12");
@@ -154,9 +154,9 @@ export class TSOFATest {
         }
  @Test()
  public t_bp06() {
-            const rb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const rp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const rbp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rbp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             TSOFA.jauBp06(2400000.5, 50123.9999, rb, rp, rbp);
             this.vvd(rb[0][0], 0.9999999999999942, 1.0E-12, "jauBp06", "rb11");
             this.vvd(rb[0][1], -7.078368960971557E-8, 1.0E-14, "jauBp06", "rb12");
@@ -188,7 +188,7 @@ export class TSOFATest {
         }
  @Test()
  public t_bpn2xy() {
-            const rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rbpn[0][0] = 0.9999962358680738;
             rbpn[0][1] = -0.002516417057665452;
             rbpn[0][2] = -0.00109356978534237;
@@ -218,7 +218,7 @@ export class TSOFATest {
         }
  @Test()
  public t_c2i00b() {
-            let rc2i: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rc2i: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rc2i = TSOFA.jauC2i00b(2400000.5, 53736.0);
             this.vvd(rc2i[0][0], 0.9999998323040954, 1.0E-12, "jauC2i00b", "11");
             this.vvd(rc2i[0][1], 5.581526349131824E-10, 1.0E-12, "jauC2i00b", "12");
@@ -232,7 +232,7 @@ export class TSOFATest {
         }
  @Test()
  public t_c2i06a() {
-            let rc2i: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rc2i: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rc2i = TSOFA.jauC2i06a(2400000.5, 53736.0);
             this.vvd(rc2i[0][0], 0.9999998323037159, 1.0E-12, "jauC2i06a", "11");
             this.vvd(rc2i[0][1], 5.581121329587614E-10, 1.0E-12, "jauC2i06a", "12");
@@ -246,8 +246,8 @@ export class TSOFATest {
         }
  @Test()
  public t_c2ibpn() {
-            const rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            let rc2i: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rc2i: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rbpn[0][0] = 0.9999962358680738;
             rbpn[0][1] = -0.002516417057665452;
             rbpn[0][2] = -0.00109356978534237;
@@ -272,7 +272,7 @@ export class TSOFATest {
  public t_c2ixy() {
             let x: number;
             let y: number;
-            let rc2i: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rc2i: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             x = 5.791308486706011E-4;
             y = 4.020579816732961E-5;
             rc2i = TSOFA.jauC2ixy(2400000.5, 53736, x, y);
@@ -291,7 +291,7 @@ export class TSOFATest {
             let x: number;
             let y: number;
             let s: number;
-            let rc2i: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rc2i: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             x = 5.791308486706011E-4;
             y = 4.020579816732961E-5;
             s = -1.220040848472272E-8;
@@ -324,7 +324,7 @@ export class TSOFATest {
             let utb: number;
             let xp: number;
             let yp: number;
-            let rc2t: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rc2t: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             tta = 2400000.5;
             uta = 2400000.5;
             ttb = 53736.0;
@@ -350,7 +350,7 @@ export class TSOFATest {
             let utb: number;
             let xp: number;
             let yp: number;
-            let rc2t: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rc2t: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             tta = 2400000.5;
             uta = 2400000.5;
             ttb = 53736.0;
@@ -376,7 +376,7 @@ export class TSOFATest {
             let utb: number;
             let xp: number;
             let yp: number;
-            let rc2t: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rc2t: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             tta = 2400000.5;
             uta = 2400000.5;
             ttb = 53736.0;
@@ -396,10 +396,10 @@ export class TSOFATest {
         }
  @Test()
  public t_c2tcio() {
-            const rc2i: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rc2i: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             let era: number;
-            const rpom: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            let rc2t: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rpom: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rc2t: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rc2i[0][0] = 0.9999998323037165;
             rc2i[0][1] = 5.581526271714304E-10;
             rc2i[0][2] = -5.791308477073444E-4;
@@ -432,10 +432,10 @@ export class TSOFATest {
         }
  @Test()
  public t_c2teqx() {
-            const rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             let gst: number;
-            const rpom: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            let rc2t: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rpom: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rc2t: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rbpn[0][0] = 0.9999989440476104;
             rbpn[0][1] = -0.0013328817612400115;
             rbpn[0][2] = -5.790767434730085E-4;
@@ -476,7 +476,7 @@ export class TSOFATest {
             let deps: number;
             let xp: number;
             let yp: number;
-            let rc2t: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rc2t: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             tta = 2400000.5;
             uta = 2400000.5;
             ttb = 53736.0;
@@ -506,7 +506,7 @@ export class TSOFATest {
             let y: number;
             let xp: number;
             let yp: number;
-            let rc2t: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rc2t: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             tta = 2400000.5;
             uta = 2400000.5;
             ttb = 53736.0;
@@ -549,8 +549,8 @@ export class TSOFATest {
         }
  @Test()
  public t_cpv() {
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            const c: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const c: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             pv[0][0] = 0.3;
             pv[0][1] = 1.2;
             pv[0][2] = -2.5;
@@ -567,8 +567,8 @@ export class TSOFATest {
         }
  @Test()
  public t_cr() {
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const c: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const c: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             r[0][0] = 2.0;
             r[0][1] = 3.0;
             r[0][2] = 2.0;
@@ -695,7 +695,7 @@ export class TSOFATest {
         }
  @Test()
  public t_eors() {
-            const rnpb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rnpb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             let s: number;
             let eo: number;
             rnpb[0][0] = 0.9999989440476104;
@@ -741,8 +741,8 @@ export class TSOFATest {
         }
  @Test()
  public t_epv00() {
-            const pvh: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            const pvb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pvh: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pvb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             const j: number = TSOFA.jauEpv00(2400000.5, 53411.52501161, pvh, pvb);
             this.vvd(pvh[0][0], -0.7757238809297706, 1.0E-14, "jauEpv00", "ph(x)");
             this.vvd(pvh[0][1], 0.559805224136334, 1.0E-14, "jauEpv00", "ph(y)");
@@ -850,7 +850,7 @@ export class TSOFATest {
         }
  @Test()
  public t_fk5hip() {
-            const r5h: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r5h: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             const s5h: number[] = [0, 0, 0];
             TSOFA.jauFk5hip(r5h, s5h);
             this.vvd(r5h[0][0], 0.9999999999999929, 1.0E-14, "jauFk5hip", "11");
@@ -882,7 +882,7 @@ export class TSOFATest {
             let phib: number;
             let psi: number;
             let eps: number;
-            let r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             gamb = -2.2433876709979924E-6;
             phib = 0.4091014602391313;
             psi = -9.501954178013015E-4;
@@ -1044,7 +1044,7 @@ export class TSOFATest {
         }
  @Test()
  public t_gst06() {
-            const rnpb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rnpb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             let theta: number;
             rnpb[0][0] = 0.9999989440476104;
             rnpb[0][1] = -0.0013328817612400115;
@@ -1106,7 +1106,7 @@ export class TSOFATest {
         }
  @Test()
  public t_ir() {
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             r[0][0] = 2.0;
             r[0][1] = 3.0;
             r[0][2] = 2.0;
@@ -1156,7 +1156,7 @@ export class TSOFATest {
         }
  @Test()
  public t_num00a() {
-            let rmatn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rmatn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rmatn = TSOFA.jauNum00a(2400000.5, 53736.0);
             this.vvd(rmatn[0][0], 0.9999999999536228, 1.0E-12, "jauNum00a", "11");
             this.vvd(rmatn[0][1], 8.836238544090872E-6, 1.0E-12, "jauNum00a", "12");
@@ -1170,7 +1170,7 @@ export class TSOFATest {
         }
  @Test()
  public t_num00b() {
-            let rmatn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rmatn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rmatn = TSOFA.jauNum00b(2400000.5, 53736);
             this.vvd(rmatn[0][0], 0.999999999953607, 1.0E-12, "jauNum00b", "11");
             this.vvd(rmatn[0][1], 8.837746144871248E-6, 1.0E-12, "jauNum00b", "12");
@@ -1184,7 +1184,7 @@ export class TSOFATest {
         }
  @Test()
  public t_num06a() {
-            let rmatn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rmatn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rmatn = TSOFA.jauNum06a(2400000.5, 53736);
             this.vvd(rmatn[0][0], 0.9999999999536228, 1.0E-12, "jauNum06a", "11");
             this.vvd(rmatn[0][1], 8.836241998111535E-6, 1.0E-12, "jauNum06a", "12");
@@ -1201,7 +1201,7 @@ export class TSOFATest {
             let epsa: number;
             let dpsi: number;
             let deps: number;
-            let rmatn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rmatn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             epsa = 0.409078976335651;
             dpsi = -9.630909107115582E-6;
             deps = 4.063239174001679E-5;
@@ -1242,7 +1242,7 @@ export class TSOFATest {
         }
  @Test()
  public t_nutm80() {
-            let rmatn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rmatn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rmatn = TSOFA.jauNutm80(2400000.5, 53736.0);
             this.vvd(rmatn[0][0], 0.9999999999535, 1.0E-12, "jauNutm80", "11");
             this.vvd(rmatn[0][1], 8.847935789636432E-6, 1.0E-12, "jauNutm80", "12");
@@ -1287,7 +1287,7 @@ export class TSOFATest {
  @Test()
  public t_p2pv() {
             const p: number[] = [0, 0, 0];
-            let pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            let pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             p[0] = 0.25;
             p[1] = 1.2;
             p[2] = 3.0;
@@ -1404,7 +1404,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pmat00() {
-            let rbp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rbp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rbp = TSOFA.jauPmat00(2400000.5, 50123.9999);
             this.vvd(rbp[0][0], 0.9999995505175088, 1.0E-12, "jauPmat00", "11");
             this.vvd(rbp[0][1], 8.695405883617885E-4, 1.0E-14, "jauPmat00", "12");
@@ -1418,7 +1418,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pmat06() {
-            let rbp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rbp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rbp = TSOFA.jauPmat06(2400000.5, 50123.9999);
             this.vvd(rbp[0][0], 0.9999995505176007, 1.0E-12, "jauPmat06", "11");
             this.vvd(rbp[0][1], 8.695404617348209E-4, 1.0E-14, "jauPmat06", "12");
@@ -1432,7 +1432,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pmat76() {
-            let rmatp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rmatp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rmatp = TSOFA.jauPmat76(2400000.5, 50123.9999);
             this.vvd(rmatp[0][0], 0.9999995504328351, 1.0E-12, "jauPmat76", "11");
             this.vvd(rmatp[0][1], 8.696632209480961E-4, 1.0E-14, "jauPmat76", "12");
@@ -1748,7 +1748,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pnm00a() {
-            let rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rbpn = TSOFA.jauPnm00a(2400000.5, 50123.9999);
             this.vvd(rbpn[0][0], 0.9999995832793134, 1.0E-12, "jauPnm00a", "11");
             this.vvd(rbpn[0][1], 8.372384254137809E-4, 1.0E-14, "jauPnm00a", "12");
@@ -1762,7 +1762,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pnm00b() {
-            let rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rbpn = TSOFA.jauPnm00b(2400000.5, 50123.9999);
             this.vvd(rbpn[0][0], 0.9999995832776208, 1.0E-12, "jauPnm00b", "11");
             this.vvd(rbpn[0][1], 8.372401264429655E-4, 1.0E-14, "jauPnm00b", "12");
@@ -1776,7 +1776,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pnm06a() {
-            let rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rbpn = TSOFA.jauPnm06a(2400000.5, 50123.9999);
             this.vvd(rbpn[0][0], 0.9999995832794205, 1.0E-12, "jauPnm06a", "11");
             this.vvd(rbpn[0][1], 8.372382772630962E-4, 1.0E-14, "jauPnm06a", "12");
@@ -1790,7 +1790,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pnm80() {
-            let rmatpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rmatpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             rmatpn = TSOFA.jauPnm80(2400000.5, 50123.9999);
             this.vvd(rmatpn[0][0], 0.9999995831934612, 1.0E-12, "jauPnm80", "11");
             this.vvd(rmatpn[0][1], 8.373654045728124E-4, 1.0E-14, "jauPnm80", "12");
@@ -1807,7 +1807,7 @@ export class TSOFATest {
             let xp: number;
             let yp: number;
             let sp: number;
-            let rpom: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rpom: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             xp = 2.55060238E-7;
             yp = 1.860359247E-6;
             sp = -1.3671745807288915E-11;
@@ -1887,7 +1887,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pv2p() {
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             let p: number[] = [0, 0, 0];
             pv[0][0] = 0.3;
             pv[0][1] = 1.2;
@@ -1902,7 +1902,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pv2s() {
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             pv[0][0] = -0.4514964673880165;
             pv[0][1] = 0.03093394277342585;
             pv[0][2] = 0.05594668105108779;
@@ -1919,8 +1919,8 @@ export class TSOFATest {
         }
  @Test()
  public t_pvdpv() {
-            const a: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            const b: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const a: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const b: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             let adb: number[] = [0, 0];
             a[0][0] = 2.0;
             a[0][1] = 2.0;
@@ -1940,7 +1940,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pvm() {
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             pv[0][0] = 0.3;
             pv[0][1] = 1.2;
             pv[0][2] = -2.5;
@@ -1953,9 +1953,9 @@ export class TSOFATest {
         }
  @Test()
  public t_pvmpv() {
-            const a: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            const b: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            let amb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const a: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const b: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            let amb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             a[0][0] = 2.0;
             a[0][1] = 2.0;
             a[0][2] = 3.0;
@@ -1978,9 +1978,9 @@ export class TSOFATest {
         }
  @Test()
  public t_pvppv() {
-            const a: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            const b: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            let apb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const a: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const b: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            let apb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             a[0][0] = 2.0;
             a[0][1] = 2.0;
             a[0][2] = 3.0;
@@ -2003,7 +2003,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pvstar() {
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             pv[0][0] = 126668.59127431606;
             pv[0][1] = 2136.792716839935;
             pv[0][2] = -245251.23398768302;
@@ -2023,8 +2023,8 @@ export class TSOFATest {
         }
  @Test()
  public t_pvu() {
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            let upv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            let upv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             pv[0][0] = 126668.59127431607;
             pv[0][1] = 2136.7927168399356;
             pv[0][2] = -245251.23398768302;
@@ -2041,7 +2041,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pvup() {
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             let p: number[] = [0, 0, 0];
             pv[0][0] = 126668.59127431607;
             pv[0][1] = 2136.7927168399356;
@@ -2056,9 +2056,9 @@ export class TSOFATest {
         }
  @Test()
  public t_pvxpv() {
-            const a: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            const b: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            let axb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const a: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const b: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            let axb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             a[0][0] = 2.0;
             a[0][1] = 2.0;
             a[0][2] = 3.0;
@@ -2097,7 +2097,7 @@ export class TSOFATest {
         }
  @Test()
  public t_rm2v() {
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             let w: number[] = [0, 0, 0];
             r[0][0] = 0.0;
             r[0][1] = -0.8;
@@ -2116,7 +2116,7 @@ export class TSOFATest {
  @Test()
  public t_rv2m() {
             const w: number[] = [0, 0, 0];
-            let r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             w[0] = 0.0;
             w[1] = 1.41371669;
             w[2] = -1.88495559;
@@ -2134,7 +2134,7 @@ export class TSOFATest {
  @Test()
  public t_rx() {
             let phi: number;
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             phi = 0.3456789;
             r[0][0] = 2.0;
             r[0][1] = 3.0;
@@ -2158,7 +2158,7 @@ export class TSOFATest {
         }
  @Test()
  public t_rxp() {
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             const p: number[] = [0, 0, 0];
             let rp: number[] = [0, 0, 0];
             r[0][0] = 2.0;
@@ -2180,9 +2180,9 @@ export class TSOFATest {
         }
  @Test()
  public t_rxpv() {
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            let rpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            let rpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             r[0][0] = 2.0;
             r[0][1] = 3.0;
             r[0][2] = 2.0;
@@ -2208,9 +2208,9 @@ export class TSOFATest {
         }
  @Test()
  public t_rxr() {
-            const a: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const b: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            let atb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const a: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const b: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let atb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             a[0][0] = 2.0;
             a[0][1] = 3.0;
             a[0][2] = 2.0;
@@ -2243,7 +2243,7 @@ export class TSOFATest {
  @Test()
  public t_ry() {
             let theta: number;
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             theta = 0.3456789;
             r[0][0] = 2.0;
             r[0][1] = 3.0;
@@ -2268,7 +2268,7 @@ export class TSOFATest {
  @Test()
  public t_rz() {
             let psi: number;
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             psi = 0.3456789;
             r[0][0] = 2.0;
             r[0][1] = 3.0;
@@ -2346,7 +2346,7 @@ export class TSOFATest {
         }
  @Test()
  public t_s2pv() {
-            let pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            let pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             pv = TSOFA.jauS2pv(-3.21, 0.123, 0.456, -7.8E-6, 9.01E-6, -1.23E-5);
             this.vvd(pv[0][0], -0.4514964673880165, 1.0E-12, "jauS2pv", "x");
             this.vvd(pv[0][1], 0.030933942773425867, 1.0E-12, "jauS2pv", "y");
@@ -2359,8 +2359,8 @@ export class TSOFATest {
  public t_s2xpv() {
             let s1: number;
             let s2: number;
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            let spv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            let spv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             s1 = 2.0;
             s2 = 3.0;
             pv[0][0] = 0.3;
@@ -2443,7 +2443,7 @@ export class TSOFATest {
             let pmd: number;
             let px: number;
             let rv: number;
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             ra = 0.01686756;
             dec = -1.093989828;
             pmr = -1.78323516E-5;
@@ -2476,8 +2476,8 @@ export class TSOFATest {
  @Test()
  public t_sxpv() {
             let s: number;
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            let spv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            let spv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             s = 2.0;
             pv[0][0] = 0.3;
             pv[0][1] = 1.2;
@@ -2537,8 +2537,8 @@ export class TSOFATest {
         }
  @Test()
  public t_tr() {
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            let rt: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rt: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             r[0][0] = 2.0;
             r[0][1] = 3.0;
             r[0][2] = 2.0;
@@ -2561,7 +2561,7 @@ export class TSOFATest {
         }
  @Test()
  public t_trxp() {
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             const p: number[] = [0, 0, 0];
             let trp: number[] = [0, 0, 0];
             r[0][0] = 2.0;
@@ -2583,9 +2583,9 @@ export class TSOFATest {
         }
  @Test()
  public t_trxpv() {
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            let trpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            let trpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             r[0][0] = 2.0;
             r[0][1] = 3.0;
             r[0][2] = 2.0;
@@ -2703,7 +2703,7 @@ export class TSOFATest {
         }
  @Test()
  public t_zpv() {
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             pv[0][0] = 0.3;
             pv[0][1] = 1.2;
             pv[0][2] = -2.5;
@@ -2720,7 +2720,7 @@ export class TSOFATest {
         }
  @Test()
  public t_zr() {
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             r[0][0] = 2.0;
             r[1][0] = 3.0;
             r[2][0] = 2.0;
@@ -2745,7 +2745,7 @@ export class TSOFATest {
  public t_apcg() {
             let date1: number;
             let date2: number;
-            const ebpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const ebpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             const ehp: number[] = [0, 0, 0];
             const astrom: TSOFA.Astrom = new TSOFA.Astrom();
             date1 = 2456165.5;
@@ -2836,7 +2836,7 @@ export class TSOFATest {
  public t_apci() {
             let date1: number;
             let date2: number;
-            const ebpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const ebpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             const ehp: number[] = [0, 0, 0];
             let x: number;
             let y: number;
@@ -2915,7 +2915,7 @@ export class TSOFATest {
  public t_apco() {
             let date1: number;
             let date2: number;
-            const ebpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const ebpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             const ehp: number[] = [0, 0, 0];
             let x: number;
             let y: number;
@@ -3050,8 +3050,8 @@ export class TSOFATest {
  public t_apcs() {
             let date1: number;
             let date2: number;
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            const ebpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const ebpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             const ehp: number[] = [0, 0, 0];
             const astrom: TSOFA.Astrom = new TSOFA.Astrom();
             date1 = 2456384.5;
@@ -3098,7 +3098,7 @@ export class TSOFATest {
  public t_apcs13() {
             let date1: number;
             let date2: number;
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = []; for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
             const astrom: TSOFA.Astrom = new TSOFA.Astrom();
             date1 = 2456165.5;
             date2 = 0.401182685;
