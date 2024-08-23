@@ -542,25 +542,7 @@
             let depspr: number;
             let psia: number;
             let oma: number;
-            const rbw: number[][] = <any> (function(dims: number[]) { 
-                let allocate = function(dims) 
-                { 
-                    if (dims.length === 0) { 
-                        return 0; 
-                    } else { 
-                        let array = new Array(); 
-                        for(let i = 0; i < dims[0]; i++) { 
-                                array.push(
-                                    allocate(
-                                        dims.slice(0)
-                                    )
-                                ); 
-                            } 
-                            return array; 
-                        }
-                    }; 
-                return allocate(dims);})
-                ([3, 3]);
+            const rbw: number[][] = <any> (function(dims: number[]) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
             t = ((date1 - TSOFA.DJ00_$LI$()) + date2) / TSOFA.DJC_$LI$();
             const fb: TSOFA.FrameBias = TSOFA.jauBi00();
             dpsibi = fb.dpsibi;
