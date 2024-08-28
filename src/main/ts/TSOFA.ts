@@ -212,6 +212,12 @@
             return ((B) < 0.0 ? -Math.abs(A) : Math.abs(A));
         }
 
+        /**
+         * Create a 2D array based on input
+         * note the number array should be 
+         * @param dimensions 
+         * @returns 
+         */
         public static CreateDimensionalArray (dimensions: number[]): number[][]{
             return function(dims: number[]){
                 return Array.from({length: dims[0]}, () => new Array(dims[1]).fill(0));
@@ -1911,7 +1917,7 @@
             if (im < 1 || im > 12)throw new TSOFAIllegalParameter("bad month", -2);
             ly = ((im === 2) && (iy % 4 === 0) && (iy % 100 !== 0 || (iy % 400 === 0))) ? 1 : 0;
             if ((id < 1) || (id > (mtab[im - 1] + ly))){
-            }
+            } //TODO compare to original
             my = ((im - 14) / 12|0);
             iypmy = (n => n<0?Math.ceil(n):Math.floor(n))(<number>(iy + my));
             djm0 = TSOFA.DJM0_$LI$();
@@ -3183,7 +3189,7 @@
             let a: number;
             let s0: number;
             let s1: number;
-            const fa: number[] = (s => { let a=new Array(); while(s-->0) a.push(0); return a; })(14);
+            const fa: number[] = (s => { let a=<number[]>[]; while(s-->0) a.push(0); return a; })(14);
             let eect: number;
             const e0: TSOFA.TERM[] = [new TSOFA.TERM([0, 0, 0, 0, 1, 0, 0, 0], 0.00264096, -3.9E-7), new TSOFA.TERM([0, 0, 0, 0, 2, 0, 0, 0], 6.352E-5, -2.0E-8), new TSOFA.TERM([0, 0, 2, -2, 3, 0, 0, 0], 1.175E-5, 1.0E-8), new TSOFA.TERM([0, 0, 2, -2, 1, 0, 0, 0], 1.121E-5, 1.0E-8), new TSOFA.TERM([0, 0, 2, -2, 2, 0, 0, 0], -4.55E-6, 0.0), new TSOFA.TERM([0, 0, 2, 0, 3, 0, 0, 0], 2.02E-6, 0.0), new TSOFA.TERM([0, 0, 2, 0, 1, 0, 0, 0], 1.98E-6, 0.0), new TSOFA.TERM([0, 0, 0, 0, 3, 0, 0, 0], -1.72E-6, 0.0), new TSOFA.TERM([0, 1, 0, 0, 1, 0, 0, 0], -1.41E-6, -1.0E-8), new TSOFA.TERM([0, 1, 0, 0, -1, 0, 0, 0], -1.26E-6, -1.0E-8), new TSOFA.TERM([1, 0, 0, 0, -1, 0, 0, 0], -6.3E-7, 0.0), new TSOFA.TERM([1, 0, 0, 0, 1, 0, 0, 0], -6.3E-7, 0.0), new TSOFA.TERM([0, 1, 2, -2, 3, 0, 0, 0], 4.6E-7, 0.0), new TSOFA.TERM([0, 1, 2, -2, 1, 0, 0, 0], 4.5E-7, 0.0), new TSOFA.TERM([0, 0, 4, -4, 4, 0, 0, 0], 3.6E-7, 0.0), new TSOFA.TERM([0, 0, 1, -1, 1, -8, 12, 0], -2.4E-7, -1.2E-7), new TSOFA.TERM([0, 0, 2, 0, 0, 0, 0, 0], 3.2E-7, 0.0), new TSOFA.TERM([0, 0, 2, 0, 2, 0, 0, 0], 2.8E-7, 0.0), new TSOFA.TERM([1, 0, 2, 0, 3, 0, 0, 0], 2.7E-7, 0.0), new TSOFA.TERM([1, 0, 2, 0, 1, 0, 0, 0], 2.6E-7, 0.0), new TSOFA.TERM([0, 0, 2, -2, 0, 0, 0, 0], -2.1E-7, 0.0), new TSOFA.TERM([0, 1, -2, 2, -3, 0, 0, 0], 1.9E-7, 0.0), new TSOFA.TERM([0, 1, -2, 2, -1, 0, 0, 0], 1.8E-7, 0.0), new TSOFA.TERM([0, 0, 0, 0, 0, 8, -13, -1], -1.0E-7, 5.0E-8), new TSOFA.TERM([0, 0, 0, 2, 0, 0, 0, 0], 1.5E-7, 0.0), new TSOFA.TERM([2, 0, -2, 0, -1, 0, 0, 0], -1.4E-7, 0.0), new TSOFA.TERM([1, 0, 0, -2, 1, 0, 0, 0], 1.4E-7, 0.0), new TSOFA.TERM([0, 1, 2, -2, 2, 0, 0, 0], -1.4E-7, 0.0), new TSOFA.TERM([1, 0, 0, -2, -1, 0, 0, 0], 1.4E-7, 0.0), new TSOFA.TERM([0, 0, 4, -2, 4, 0, 0, 0], 1.3E-7, 0.0), new TSOFA.TERM([0, 0, 2, -2, 4, 0, 0, 0], -1.1E-7, 0.0), new TSOFA.TERM([1, 0, -2, 0, -3, 0, 0, 0], 1.1E-7, 0.0), new TSOFA.TERM([1, 0, -2, 0, -1, 0, 0, 0], 1.1E-7, 0.0)];
             const e1: TSOFA.TERM[] = [new TSOFA.TERM([0, 0, 0, 0, 1, 0, 0, 0], -8.7E-7, 0.0)];
@@ -4676,7 +4682,7 @@
          * 
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
-        public static jauFk52h(r5: number, d5: number, dr5: number, dd5: number, px5: number, rv5: number): TSOFA.CatalogCoords {
+        public static jauFk52h(r5: number, d5: number, dr5: number, dd5: number, px5: number, rv5: number): TSOFA.CatalogCoords | null {
             let i: number;
             const pv5: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             const r5h: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
@@ -4686,12 +4692,12 @@
             const pvh: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             TSOFA.jauStarpv(r5, d5, dr5, dd5, px5, rv5, pv5);
             TSOFA.jauFk5hip(r5h, s5h);
-            for(i = 0; i < 3; s5h[i++] /= 365.25) {;}
+            for(i = 0; i < 3; s5h[i++] /= 365.25) {;} //TODO: check original
             pvh[0] = TSOFA.jauRxp(r5h, pv5[0]);
             wxp = TSOFA.jauPxp(pv5[0], s5h);
             vv = TSOFA.jauPpp(wxp, pv5[1]);
             pvh[1] = TSOFA.jauRxp(r5h, vv);
-            let cat: TSOFA.CatalogCoords = null as any;
+            let cat: TSOFA.CatalogCoords | null = null;
             try {
                 cat = TSOFA.jauPvstar(pvh);
             } catch(e) {
@@ -6094,7 +6100,7 @@
          * 
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
-        public static jauH2fk5(rh: number, dh: number, drh: number, ddh: number, pxh: number, rvh: number): TSOFA.CatalogCoords {
+        public static jauH2fk5(rh: number, dh: number, drh: number, ddh: number, pxh: number, rvh: number): TSOFA.CatalogCoords | null {
             let i: number;
             const pvh: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             const r5h: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
@@ -6105,13 +6111,13 @@
             const pv5: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             TSOFA.jauStarpv(rh, dh, drh, ddh, pxh, rvh, pvh);
             TSOFA.jauFk5hip(r5h, s5h);
-            for(i = 0; i < 3; s5h[i++] /= 365.25) {;}
+            for(i = 0; i < 3; s5h[i++] /= 365.25) {;} // TODO check original
             sh = TSOFA.jauRxp(r5h, s5h);
             pv5[0] = TSOFA.jauTrxp(r5h, pvh[0]);
             wxp = TSOFA.jauPxp(pvh[0], sh);
             vv = TSOFA.jauPmp(pvh[1], wxp);
             pv5[1] = TSOFA.jauTrxp(r5h, vv);
-            let cat: TSOFA.CatalogCoords = null as any;
+            let cat: TSOFA.CatalogCoords | null = null;
             try {
                 cat = TSOFA.jauPvstar(pv5);
             } catch(e) {
