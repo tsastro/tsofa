@@ -2555,7 +2555,7 @@
             djm = jd.djm1;
             if (iy < TSOFA.leapSeconds_$LI$()[0].iyear)throw new TSOFAInternalError("year before UTC start", 1);
             if (iy > TSOFA.IYV + 5){
-            }
+            }//TODO compare to original
             m = 12 * iy + im;
             for(i = NDAT - 1; i >= 0; i--) {{
                 if (m >= (12 * TSOFA.leapSeconds_$LI$()[i].iyear + TSOFA.leapSeconds_$LI$()[i].month))break;
