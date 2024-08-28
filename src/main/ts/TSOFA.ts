@@ -537,31 +537,31 @@
          */
         public static jauBp00(date1: number, date2: number, rb: number[][], rp: number[][], rbp: number[][]) {
             const EPS0: number = 84381.448 * TSOFA.DAS2R_$LI$();
-            //let t: number;
-            //let dpsibi: number;
-            //let depsbi: number;
-            //let dra0: number;
-            //let psia77: number;
-            //let oma77: number;
-            //let chia: number;
-            //let dpsipr: number;
-            //let depspr: number;
-            //let psia: number;
-            //let oma: number;
+            let t: number;
+            let dpsibi: number;
+            let depsbi: number;
+            let dra0: number;
+            let psia77: number;
+            let oma77: number;
+            let chia: number;
+            let dpsipr: number;
+            let depspr: number;
+            let psia: number;
+            let oma: number;
             const rbw: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
-            const t = ((date1 - TSOFA.DJ00_$LI$()) + date2) / TSOFA.DJC_$LI$();
+            t = ((date1 - TSOFA.DJ00_$LI$()) + date2) / TSOFA.DJC_$LI$();
             const fb: TSOFA.FrameBias = TSOFA.jauBi00();
-            const dpsibi: number = fb.dpsibi;
-            const depsbi: number = fb.depsbi;
-            const dra0: number = fb.dra;
-            const psia77: number = (5038.7784 + (-1.07259 + (-0.001147) * t) * t) * t * TSOFA.DAS2R_$LI$();
-            const oma77: number = EPS0 + ((0.05127 + (-0.007726) * t) * t) * t * TSOFA.DAS2R_$LI$();
-            const chia: number = (10.5526 + (-2.38064 + (-0.001125) * t) * t) * t * TSOFA.DAS2R_$LI$();
+            dpsibi = fb.dpsibi;
+            depsbi = fb.depsbi;
+            dra0 = fb.dra;
+            psia77 = (5038.7784 + (-1.07259 + (-0.001147) * t) * t) * t * TSOFA.DAS2R_$LI$();
+            oma77 = EPS0 + ((0.05127 + (-0.007726) * t) * t) * t * TSOFA.DAS2R_$LI$();
+            chia = (10.5526 + (-2.38064 + (-0.001125) * t) * t) * t * TSOFA.DAS2R_$LI$();
             const pc: TSOFA.PrecessionDeltaTerms = TSOFA.jauPr00(date1, date2);
-            const dpsipr: number = pc.dpsipr;
-            const depspr: number = pc.depspr;
-            const psia: number = psia77 + dpsipr;
-            const oma: number = oma77 + depspr;
+            dpsipr = pc.dpsipr;
+            depspr = pc.depspr;
+            psia = psia77 + dpsipr;
+            oma = oma77 + depspr;
             TSOFA.jauIr$double_A_A(rbw);
             TSOFA.jauRz(dra0, rbw);
             TSOFA.jauRy(dpsibi * Math.sin(EPS0), rbw);
@@ -648,13 +648,13 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauBp06(date1: number, date2: number, rb: number[][], rp: number[][], rbp: number[][]) {
-            //let rbt: number[][];
+            let rbt: number[][];
             const fw: TSOFA.FWPrecessionAngles = TSOFA.jauPfw06(TSOFA.DJM0_$LI$(), TSOFA.DJM00_$LI$());
             let rt: number[][] = TSOFA.jauFw2m(fw.gamb, fw.phib, fw.psib, fw.epsa);
             TSOFA.jauCr(rt, rb);
             rt = TSOFA.jauPmat06(date1, date2);
             TSOFA.jauCr(rt, rbp);
-            const rbt: number[][] = TSOFA.jauTr(rb);
+            rbt = TSOFA.jauTr(rb);
             rt = TSOFA.jauRxr(rbp, rbt);
             TSOFA.jauCr(rt, rp);
             return;
@@ -864,10 +864,10 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauC2i00b(date1: number, date2: number): number[][] {
-            //let rbpn: number[][];
-            //let rc2i: number[][];
-            const rbpn: number[][] = TSOFA.jauPnm00b(date1, date2);
-            const rc2i: number[][] = TSOFA.jauC2ibpn(date1, date2, rbpn);
+            let rbpn: number[][];
+            let rc2i: number[][];
+            rbpn = TSOFA.jauPnm00b(date1, date2);
+            rc2i = TSOFA.jauC2ibpn(date1, date2, rbpn);
             return rc2i;
         }
 
