@@ -179,7 +179,7 @@
 
         static TANGENT_TINY: number = 1.0E-6;
 
-        static DBL_EPSILON: number; public static DBL_EPSILON_$LI$(): number { TSOFA.__static_initialize(); if (TSOFA.DBL_EPSILON == null) { TSOFA.DBL_EPSILON = /* ulp */((x) => { const buffer = new ArrayBuffer(8); const dataView = new DataView(buffer); dataView.setFloat64(0, x); let first = dataView.getUint32(0); let second = dataView.getUint32(4); let rawExponent = first & 0x7ff00000; if (rawExponent == 0x7ff00000) { dataView.setUint32(0,first & 0x7fffffff); } else if (rawExponent == 0) { dataView.setUint32(4,1); dataView.setUint32(0,0); } else if (rawExponent >= (52 << 20) + 0x00100000) { dataView.setUint32(0,rawExponent - (52 << 20)); dataView.setUint32(4,0); } else if (rawExponent >= (33 << 20)) { dataView.setUint32(0,1 << ((rawExponent - (33 << 20))  >>> 20 )); dataView.setUint32(4,0); } else { dataView.setUint32(4,1 << ((rawExponent - 0x00100000)  >>> 20)); dataView.setUint32(0,0); } return dataView.getFloat64(0); })(1.0); }  return TSOFA.DBL_EPSILON; }
+        static DBL_EPSILON: number; public static DBL_EPSILON_$LI$(): number { TSOFA.__static_initialize(); if (TSOFA.DBL_EPSILON == null) { TSOFA.DBL_EPSILON = /* ulp */((x) => { const buffer = new ArrayBuffer(8); const dataView = new DataView(buffer); dataView.setFloat64(0, x); const first = dataView.getUint32(0); const second = dataView.getUint32(4); const rawExponent = first & 0x7ff00000; if (rawExponent == 0x7ff00000) { dataView.setUint32(0,first & 0x7fffffff); } else if (rawExponent == 0) { dataView.setUint32(4,1); dataView.setUint32(0,0); } else if (rawExponent >= (52 << 20) + 0x00100000) { dataView.setUint32(0,rawExponent - (52 << 20)); dataView.setUint32(4,0); } else if (rawExponent >= (33 << 20)) { dataView.setUint32(0,1 << ((rawExponent - (33 << 20))  >>> 20 )); dataView.setUint32(4,0); } else { dataView.setUint32(4,1 << ((rawExponent - 0x00100000)  >>> 20)); dataView.setUint32(0,0); } return dataView.getFloat64(0); })(1.0); }  return TSOFA.DBL_EPSILON; }
 
         /**
          * dint(A) - truncate to nearest whole number towards zero (double)
@@ -210,6 +210,12 @@
          */
         static dsign(A: number, B: number): number {
             return ((B) < 0.0 ? -Math.abs(A) : Math.abs(A));
+        }
+
+        public static CreateDimensionalArray (dimensions: number[]): number[][]{
+            return function(dims: number[]){
+                return Array.from({length: dims[0]}, () => new Array(dims[1]).fill(0));
+            }(dimensions);
         }
 
         /**
@@ -531,31 +537,31 @@
          */
         public static jauBp00(date1: number, date2: number, rb: number[][], rp: number[][], rbp: number[][]) {
             const EPS0: number = 84381.448 * TSOFA.DAS2R_$LI$();
-            let t: number;
-            let dpsibi: number;
-            let depsbi: number;
-            let dra0: number;
-            let psia77: number;
-            let oma77: number;
-            let chia: number;
-            let dpsipr: number;
-            let depspr: number;
-            let psia: number;
-            let oma: number;
-            const rbw: number[][] = <any> (function(dims: number[]) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            t = ((date1 - TSOFA.DJ00_$LI$()) + date2) / TSOFA.DJC_$LI$();
+            //let t: number;
+            //let dpsibi: number;
+            //let depsbi: number;
+            //let dra0: number;
+            //let psia77: number;
+            //let oma77: number;
+            //let chia: number;
+            //let dpsipr: number;
+            //let depspr: number;
+            //let psia: number;
+            //let oma: number;
+            const rbw: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+            const t = ((date1 - TSOFA.DJ00_$LI$()) + date2) / TSOFA.DJC_$LI$();
             const fb: TSOFA.FrameBias = TSOFA.jauBi00();
-            dpsibi = fb.dpsibi;
-            depsbi = fb.depsbi;
-            dra0 = fb.dra;
-            psia77 = (5038.7784 + (-1.07259 + (-0.001147) * t) * t) * t * TSOFA.DAS2R_$LI$();
-            oma77 = EPS0 + ((0.05127 + (-0.007726) * t) * t) * t * TSOFA.DAS2R_$LI$();
-            chia = (10.5526 + (-2.38064 + (-0.001125) * t) * t) * t * TSOFA.DAS2R_$LI$();
+            const dpsibi: number = fb.dpsibi;
+            const depsbi: number = fb.depsbi;
+            const dra0: number = fb.dra;
+            const psia77: number = (5038.7784 + (-1.07259 + (-0.001147) * t) * t) * t * TSOFA.DAS2R_$LI$();
+            const oma77: number = EPS0 + ((0.05127 + (-0.007726) * t) * t) * t * TSOFA.DAS2R_$LI$();
+            const chia: number = (10.5526 + (-2.38064 + (-0.001125) * t) * t) * t * TSOFA.DAS2R_$LI$();
             const pc: TSOFA.PrecessionDeltaTerms = TSOFA.jauPr00(date1, date2);
-            dpsipr = pc.dpsipr;
-            depspr = pc.depspr;
-            psia = psia77 + dpsipr;
-            oma = oma77 + depspr;
+            const dpsipr: number = pc.dpsipr;
+            const depspr: number = pc.depspr;
+            const psia: number = psia77 + dpsipr;
+            const oma: number = oma77 + depspr;
             TSOFA.jauIr$double_A_A(rbw);
             TSOFA.jauRz(dra0, rbw);
             TSOFA.jauRy(dpsibi * Math.sin(EPS0), rbw);
@@ -642,13 +648,13 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauBp06(date1: number, date2: number, rb: number[][], rp: number[][], rbp: number[][]) {
-            let rbt: number[][];
+            //let rbt: number[][];
             const fw: TSOFA.FWPrecessionAngles = TSOFA.jauPfw06(TSOFA.DJM0_$LI$(), TSOFA.DJM00_$LI$());
             let rt: number[][] = TSOFA.jauFw2m(fw.gamb, fw.phib, fw.psib, fw.epsa);
             TSOFA.jauCr(rt, rb);
             rt = TSOFA.jauPmat06(date1, date2);
             TSOFA.jauCr(rt, rbp);
-            rbt = TSOFA.jauTr(rb);
+            const rbt: number[][] = TSOFA.jauTr(rb);
             rt = TSOFA.jauRxr(rbp, rbt);
             TSOFA.jauCr(rt, rp);
             return;
@@ -858,10 +864,10 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauC2i00b(date1: number, date2: number): number[][] {
-            let rbpn: number[][];
-            let rc2i: number[][];
-            rbpn = TSOFA.jauPnm00b(date1, date2);
-            rc2i = TSOFA.jauC2ibpn(date1, date2, rbpn);
+            //let rbpn: number[][];
+            //let rc2i: number[][];
+            const rbpn: number[][] = TSOFA.jauPnm00b(date1, date2);
+            const rc2i: number[][] = TSOFA.jauC2ibpn(date1, date2, rbpn);
             return rc2i;
         }
 
@@ -1164,7 +1170,7 @@
             let r2: number;
             let e: number;
             let d: number;
-            const rc2i: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rc2i: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             r2 = x * x + y * y;
             e = (r2 > 0.0) ? Math.atan2(y, x) : 0.0;
             d = Math.atan(Math.sqrt(r2 / (1.0 - r2)));
@@ -1303,7 +1309,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauC2t00a(tta: number, ttb: number, uta: number, utb: number, xp: number, yp: number): number[][] {
-            let rc2i: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rc2i: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             let era: number;
             let sp: number;
             let rpom: number[][];
@@ -1563,7 +1569,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauC2tcio(rc2i: number[][], era: number, rpom: number[][]): number[][] {
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             TSOFA.jauCr(rc2i, r);
             TSOFA.jauRz(era, r);
             const rc2t: number[][] = TSOFA.jauRxr(rpom, r);
@@ -1629,7 +1635,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauC2teqx(rbpn: number[][], gst: number, rpom: number[][]): number[][] {
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             let rc2t: number[][];
             TSOFA.jauCr(rbpn, r);
             TSOFA.jauRz(gst, r);
@@ -1829,10 +1835,10 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauC2txy(tta: number, ttb: number, uta: number, utb: number, x: number, y: number, xp: number, yp: number): number[][] {
-            let rc2i: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rc2i: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             let era: number;
             let sp: number;
-            let rpom: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rpom: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             rc2i = TSOFA.jauC2ixy(tta, ttb, x, y);
             era = TSOFA.jauEra00(uta, utb);
             sp = TSOFA.jauSp00(tta, ttb);
@@ -4672,12 +4678,12 @@
          */
         public static jauFk52h(r5: number, d5: number, dr5: number, dd5: number, px5: number, rv5: number): TSOFA.CatalogCoords {
             let i: number;
-            const pv5: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            const r5h: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const pv5: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
+            const r5h: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             const s5h: number[] = [0, 0, 0];
             let wxp: number[] = [0, 0, 0];
             let vv: number[] = [0, 0, 0];
-            const pvh: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pvh: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             TSOFA.jauStarpv(r5, d5, dr5, dd5, px5, rv5, pv5);
             TSOFA.jauFk5hip(r5h, s5h);
             for(i = 0; i < 3; s5h[i++] /= 365.25) {;}
@@ -4841,10 +4847,10 @@
         public static jauFk5hz(r5: number, d5: number, date1: number, date2: number): TSOFA.SphericalCoordinate {
             let t: number;
             let p5e: number[] = [0, 0, 0];
-            const r5h: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r5h: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             const s5h: number[] = [0, 0, 0];
             let vst: number[] = [0, 0, 0];
-            let rst: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rst: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             let p5: number[] = [0, 0, 0];
             let ph: number[] = [0, 0, 0];
             t = -((date1 - TSOFA.DJ00_$LI$()) + date2) / TSOFA.DJY_$LI$();
@@ -4935,7 +4941,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauFw2m(gamb: number, phib: number, psi: number, eps: number): number[][] {
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             TSOFA.jauIr$double_A_A(r);
             TSOFA.jauRz(gamb, r);
             TSOFA.jauRx(phib, r);
@@ -5003,7 +5009,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauFw2xy(gamb: number, phib: number, psi: number, eps: number): TSOFA.CelestialIntermediatePole {
-            let r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let r: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             r = TSOFA.jauFw2m(gamb, phib, psi, eps);
             return TSOFA.jauBpn2xy(r);
         }
@@ -6090,13 +6096,13 @@
          */
         public static jauH2fk5(rh: number, dh: number, drh: number, ddh: number, pxh: number, rvh: number): TSOFA.CatalogCoords {
             let i: number;
-            const pvh: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            const r5h: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const pvh: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
+            const r5h: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             const s5h: number[] = [0, 0, 0];
             let sh: number[] = [0, 0, 0];
             let wxp: number[] = [0, 0, 0];
             let vv: number[] = [0, 0, 0];
-            const pv5: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv5: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             TSOFA.jauStarpv(rh, dh, drh, ddh, pxh, rvh, pvh);
             TSOFA.jauFk5hip(r5h, s5h);
             for(i = 0; i < 3; s5h[i++] /= 365.25) {;}
@@ -6196,13 +6202,13 @@
         public static jauHfk5z(rh: number, dh: number, date1: number, date2: number): TSOFA.CatalogCoords {
             let t: number;
             let ph: number[] = [0, 0, 0];
-            const r5h: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r5h: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             const s5h: number[] = [0, 0, 0];
             let sh: number[] = [0, 0, 0];
             let vst: number[] = [0, 0, 0];
-            let rst: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            let r5ht: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const pv5e: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            let rst: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+            let r5ht: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+            const pv5e: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             let vv: number[] = [0, 0, 0];
             t = ((date1 - TSOFA.DJ00_$LI$()) + date2) / TSOFA.DJY_$LI$();
             ph = TSOFA.jauS2c(rh, dh);
@@ -6257,7 +6263,7 @@
         }
 
         public static jauIr$(): number[][] {
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             TSOFA.jauZr$double_A_A(r);
             return r;
         }
@@ -6773,7 +6779,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauNumat(epsa: number, dpsi: number, deps: number): number[][] {
-            const rmatn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rmatn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             TSOFA.jauIr$double_A_A(rmatn);
             TSOFA.jauRx(epsa, rmatn);
             TSOFA.jauRz(-dpsi, rmatn);
@@ -7732,7 +7738,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauP2pv(p: number[]): number[][] {
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const pv: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             TSOFA.jauCp(p, pv[0]);
             TSOFA.jauZp$double_A(pv[1]);
             return pv;
@@ -7974,7 +7980,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauPb06(date1: number, date2: number): TSOFA.EulerAngles {
-            let r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let r: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             let y: number;
             let x: number;
             r = TSOFA.jauPmat06(date1, date2);
@@ -8275,7 +8281,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauPlan94(date1: number, date2: number, np: number): number[][] {
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             const GK: number = 0.01720209895;
             const SINEPS: number = 0.3977771559319137;
             const COSEPS: number = 0.9174820620691818;
@@ -8480,9 +8486,9 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauPmat00(date1: number, date2: number): number[][] {
-            const rb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const rp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const rbp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rb: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+            const rp: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+            const rbp: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             TSOFA.jauBp00(date1, date2, rb, rp, rbp);
             return rbp;
         }
@@ -8629,8 +8635,8 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauPmat76(date1: number, date2: number): number[][] {
-            const wmat: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const rmatp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const wmat: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+            const rmatp: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             const euler: TSOFA.EulerAngles = TSOFA.jauPrec76(TSOFA.DJ00_$LI$(), 0.0, date1, date2);
             TSOFA.jauIr$double_A_A(wmat);
             TSOFA.jauRz(-euler.zeta, wmat);
@@ -8822,13 +8828,13 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauPn00(date1: number, date2: number, dpsi: number, deps: number): TSOFA.PrecessionNutation {
-            const rbpw: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            let rnw: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const rb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const rp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const rbp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const rn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            let rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rbpw: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+            let rnw: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+            const rb: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+            const rp: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+            const rbp: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+            const rn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+            let rbpn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             const nut: TSOFA.PrecessionDeltaTerms = TSOFA.jauPr00(date1, date2);
             const epsa: number = TSOFA.jauObl80(date1, date2) + nut.depspr;
             TSOFA.jauBp00(date1, date2, rb, rp, rbpw);
@@ -9149,9 +9155,9 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauPn06(date1: number, date2: number, dpsi: number, deps: number): TSOFA.PrecessionNutation {
-            const rb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const rbp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            const rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rb: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+            const rbp: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+            const rbpn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             let fw: TSOFA.FWPrecessionAngles = TSOFA.jauPfw06(TSOFA.DJM0_$LI$(), TSOFA.DJM00_$LI$());
             let r1: number[][] = TSOFA.jauFw2m(fw.gamb, fw.phib, fw.psib, fw.epsa);
             TSOFA.jauCr(r1, rb);
@@ -9520,8 +9526,8 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauPnm80(date1: number, date2: number): number[][] {
-            let rmatp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
-            let rmatn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rmatp: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+            let rmatn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             rmatp = TSOFA.jauPmat76(date1, date2);
             rmatn = TSOFA.jauNutm80(date1, date2);
             const rmatpn: number[][] = TSOFA.jauRxr(rmatn, rmatp);
@@ -9583,7 +9589,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauPom00(xp: number, yp: number, sp: number): number[][] {
-            const rpom: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rpom: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             TSOFA.jauIr$double_A_A(rpom);
             TSOFA.jauRz(sp, rpom);
             TSOFA.jauRy(-xp, rpom);
@@ -10061,7 +10067,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauPvmpv(a: number[][], b: number[][]): number[][] {
-            const amb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const amb: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             amb[0] = TSOFA.jauPmp(a[0], b[0]);
             amb[1] = TSOFA.jauPmp(a[1], b[1]);
             return amb;
@@ -10096,7 +10102,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauPvppv(a: number[][], b: number[][]): number[][] {
-            const apb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const apb: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             apb[0] = TSOFA.jauPpp(a[0], b[0]);
             apb[1] = TSOFA.jauPpp(a[1], b[1]);
             return apb;
@@ -10269,7 +10275,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauPvu(dt: number, pv: number[][]): number[][] {
-            const upv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const upv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             upv[0] = TSOFA.jauPpsp(pv[0], dt, pv[1]);
             TSOFA.jauCp(pv[1], upv[1]);
             return upv;
@@ -10350,11 +10356,11 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauPvxpv(a: number[][], b: number[][]): number[][] {
-            const wa: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            const wb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const wa: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
+            const wb: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             let axbd: number[] = [0, 0, 0];
             let adxb: number[] = [0, 0, 0];
-            const axb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const axb: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             TSOFA.jauCpv(a, wa);
             TSOFA.jauCpv(b, wb);
             axb[0] = TSOFA.jauPxp(wa[0], wb[0]);
@@ -10514,7 +10520,7 @@
             let s: number;
             let c: number;
             let f: number;
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             x = w[0];
             y = w[1];
             z = w[2];
@@ -10572,7 +10578,7 @@
         public static jauRx(phi: number, r: number[][]) {
             let s: number;
             let c: number;
-            const a: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const a: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             let w: number[][];
             s = Math.sin(phi);
             c = Math.cos(phi);
@@ -10663,7 +10669,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauRxpv(r: number[][], pv: number[][]): number[][] {
-            const rpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 0]);
+            const rpv: number[][] = TSOFA.CreateDimensionalArray([2, 0]);
             rpv[0] = TSOFA.jauRxp(r, pv[0]);
             rpv[1] = TSOFA.jauRxp(r, pv[1]);
             return rpv;
@@ -10702,7 +10708,7 @@
             let j: number;
             let k: number;
             let w: number;
-            const wm: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const wm: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             for(i = 0; i < 3; i++) {{
                 for(j = 0; j < 3; j++) {{
                     w = 0.0;
@@ -10748,7 +10754,7 @@
         public static jauRy(theta: number, r: number[][]) {
             let s: number;
             let c: number;
-            const a: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const a: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             let w: number[][];
             s = Math.sin(theta);
             c = Math.cos(theta);
@@ -10795,7 +10801,7 @@
         public static jauRz(psi: number, r: number[][]) {
             let s: number;
             let c: number;
-            const a: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const a: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             let w: number[][];
             s = Math.sin(psi);
             c = Math.cos(psi);
@@ -11135,7 +11141,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauS00b(date1: number, date2: number): number {
-            let rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rbpn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             let s: number;
             rbpn = TSOFA.jauPnm00b(date1, date2);
             const cip: TSOFA.CelestialIntermediatePole = TSOFA.jauBpn2xy(rbpn);
@@ -11383,7 +11389,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauS06a(date1: number, date2: number): number {
-            let rnpb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rnpb: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             let s: number;
             rnpb = TSOFA.jauPnm06a(date1, date2);
             const cip: TSOFA.CelestialIntermediatePole = TSOFA.jauBpn2xy(rnpb);
@@ -11482,7 +11488,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauS2pv(theta: number, phi: number, r: number, td: number, pd: number, rd: number): number[][] {
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             let st: number;
             let ct: number;
             let sp: number;
@@ -11539,7 +11545,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauS2xpv(s1: number, s2: number, pv: number[][]): number[][] {
-            const spv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const spv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             spv[0] = TSOFA.jauSxp(s1, pv[0]);
             spv[1] = TSOFA.jauSxp(s2, pv[1]);
             return spv;
@@ -11804,16 +11810,16 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauStarpm(ra1: number, dec1: number, pmr1: number, pmd1: number, px1: number, rv1: number, ep1a: number, ep1b: number, ep2a: number, ep2b: number): TSOFA.CatalogCoords {
-            const pv1: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv1: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             let tl1: number;
             let dt: number;
-            let pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            let pv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             let r2: number;
             let rdv: number;
             let v2: number;
             let c2mv2: number;
             let tl2: number;
-            let pv2: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            let pv2: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             TSOFA.jauStarpv(ra1, dec1, pmr1, pmd1, px1, rv1, pv1);
             tl1 = TSOFA.jauPm(pv1[0]) / TSOFA.DC_$LI$();
             dt = (ep2a - ep1a) + (ep2b - ep1b);
@@ -12712,7 +12718,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauTr(r: number[][]): number[][] {
-            const wm: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const wm: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             let i: number;
             let j: number;
             for(i = 0; i < 3; i++) {{
@@ -13723,7 +13729,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauXys00b(date1: number, date2: number): TSOFA.ICRFrame {
-            let rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rbpn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             rbpn = TSOFA.jauPnm00b(date1, date2);
             const cip: TSOFA.CelestialIntermediatePole = TSOFA.jauBpn2xy(rbpn);
             const s: number = TSOFA.jauS00(date1, date2, cip.x, cip.y);
@@ -13798,7 +13804,7 @@
          * <!-- Copyright (C) 2009 IAU SOFA Review Board.  See notes at end -->
          */
         public static jauXys06a(date1: number, date2: number): TSOFA.ICRFrame {
-            let rbpn: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let rbpn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             rbpn = TSOFA.jauPnm06a(date1, date2);
             const cip: TSOFA.CelestialIntermediatePole = TSOFA.jauBpn2xy(rbpn);
             const s: number = TSOFA.jauS06(date1, date2, cip.x, cip.y);
@@ -13878,7 +13884,7 @@
         }
 
         public static jauZpv$(): number[][] {
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             TSOFA.jauZpv$double_A_A(pv);
             return pv;
         }
@@ -13920,7 +13926,7 @@
         }
 
         public static jauZr$(): number[][] {
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const r: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             TSOFA.jauZr$double_A_A(r);
             return r;
         }
@@ -14226,8 +14232,8 @@
          * <!-- Copyright (C) 2013 IAU SOFA Board.  See notes at end. -->
          */
         public static jauApcg13(date1: number, date2: number, astrom: TSOFA.Astrom) {
-            const ehpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            const ebpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const ehpv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
+            const ebpv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             TSOFA.jauEpv00(date1, date2, ehpv, ebpv);
             TSOFA.jauApcg(date1, date2, ebpv, ehpv[0], astrom);
         }
@@ -14461,8 +14467,8 @@
          * <!-- Copyright (C) 2013 IAU SOFA Board.  See notes at end. -->
          */
         public static jauApci13(date1: number, date2: number, astrom: TSOFA.Astrom): number {
-            const ehpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            const ebpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const ehpv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
+            const ebpv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             let r: number[][];
             let s: number;
             TSOFA.jauEpv00(date1, date2, ehpv, ebpv);
@@ -14626,7 +14632,7 @@
             let b: number;
             let eral: number;
             let c: number;
-            let r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            let r: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             let pvc: number[][];
             let pv: number[][];
             TSOFA.jauIr$double_A_A(r);
@@ -14827,8 +14833,8 @@
          * @throws TSOFAIllegalParameter unacceptable date.
          */
         public static jauApco13(utc1: number, utc2: number, dut1: number, elong: number, phi: number, hm: number, xp: number, yp: number, phpa: number, tc: number, rh: number, wl: number, astrom: TSOFA.Astrom): number {
-            const ehpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            const ebpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const ehpv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
+            const ebpv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             let r: number[][];
             let s: number;
             let theta: number;
@@ -15102,8 +15108,8 @@
          * <!-- Copyright (C) 2013 IAU SOFA Board.  See notes at end. -->
          */
         public static jauApcs13(date1: number, date2: number, pv: number[][], astrom: TSOFA.Astrom) {
-            const ehpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
-            const ebpv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const ehpv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
+            const ebpv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             TSOFA.jauEpv00(date1, date2, ehpv, ebpv);
             TSOFA.jauApcs(date1, date2, pv, ebpv, ehpv[0], astrom);
         }
@@ -15407,7 +15413,7 @@
          * @throws TSOFAIllegalParameter unacceptable date.
          */
         public static jauApio(sp: number, theta: number, elong: number, phi: number, hm: number, xp: number, yp: number, refa: number, refb: number, astrom: TSOFA.Astrom) {
-            const r: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const r: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             let a: number;
             let b: number;
             let eral: number;
@@ -17767,7 +17773,7 @@
             let z: number;
             let s: number;
             let c: number;
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             rpm = TSOFA.jauPom00(xp, yp, sp);
             xyz = TSOFA.jauTrxp(rpm, xyzm);
             x = xyz[0];
@@ -18260,7 +18266,7 @@
          */
         public static jauEcm06(date1: number, date2: number): number[][] {
             let ob: number;
-            const e: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const e: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             ob = TSOFA.jauObl06(date1, date2);
             const bp: number[][] = TSOFA.jauPmat06(date1, date2);
             TSOFA.jauIr$double_A_A(e);
@@ -18472,7 +18478,7 @@
          * <!--Copyright (C) 2016 IAU SOFA Board.  See notes at end. -->
          */
         public static jauLtecm(epj: number): number[][] {
-            const rm: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rm: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             const dx: number = -0.016617 * TSOFA.DAS2R_$LI$();
             const de: number = -0.0068192 * TSOFA.DAS2R_$LI$();
             const dr: number = -0.0146 * TSOFA.DAS2R_$LI$();
@@ -18618,7 +18624,7 @@
          * <!--Copyright (C) 2016 IAU SOFA Board.  See notes at end. -->
          */
         public static jauLtp(epj: number): number[][] {
-            const rp: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rp: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             let i: number;
             const peqr: number[] = TSOFA.jauLtpequ(epj);
             const pecl: number[] = TSOFA.jauLtpecl(epj);
@@ -18686,7 +18692,7 @@
          * <!--Copyright (C) 2016 IAU SOFA Board.  See notes at end. -->
          */
         public static jauLtpb(epj: number): number[][] {
-            const rpb: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rpb: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             const dx: number = -0.016617 * TSOFA.DAS2R_$LI$();
             const de: number = -0.0068192 * TSOFA.DAS2R_$LI$();
             const dr: number = -0.0146 * TSOFA.DAS2R_$LI$();
@@ -19811,7 +19817,7 @@
             let l: number;
             let r0: number[][];
             let pv1: number[][];
-            const pv2: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv2: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             const VF: number = 21.095;
             const a: number[][] = [[-1.62557E-6, -3.1919E-7, -1.3843E-7], [+0.001245, -0.00158, -6.59E-4]];
             const em: number[][][][] = [[[[+0.9999256782, -0.0111820611, -0.0048579477], [+2.42395018E-6, -2.710663E-8, -1.177656E-8]], [[+0.011182061, +0.9999374784, -2.71765E-5], [+2.710663E-8, +2.42397878E-6, -6.587E-11]], [[+0.0048579479, -2.71474E-5, +0.9999881997], [+1.177656E-8, -6.582E-11, +2.42410173E-6]]], [[[-5.51E-4, -0.238565, +0.435739], [+0.99994704, -0.01118251, -0.00485767]], [[+0.238514, -0.002667, -0.008541], [+0.01118251, +0.99995883, -2.718E-5]], [[-0.435623, +0.012254, +0.002117], [+0.00485767, -2.714E-5, +1.00000956]]]];
@@ -19921,7 +19927,7 @@
             const PMF: number = 100.0 * TSOFA.DR2AS_$LI$();
             let r0: number[];
             let p: number[];
-            let pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            let pv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             let w: number;
             let i: number;
             let j: number;
@@ -20048,10 +20054,10 @@
             let k: number;
             let l: number;
             let r0: number[][];
-            const r1: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const r1: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             let p1: number[];
             let p2: number[];
-            const pv: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+            const pv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             const VF: number = 21.095;
             const a: number[][] = [[-1.62557E-6, -3.1919E-7, -1.3843E-7], [+0.001245, -0.00158, -6.59E-4]];
             const em: number[][][][] = [[[[+0.9999256795, +0.0111814828, +0.0048590039], [-2.4238984E-6, -2.710544E-8, -1.177742E-8]], [[-0.0111814828, +0.9999374849, -2.71771E-5], [+2.710544E-8, -2.42392702E-6, +6.585E-11]], [[-0.004859004, -2.71557E-5, +0.9999881946], [+1.177742E-8, +6.585E-11, -2.42404995E-6]]], [[[-5.51E-4, +0.238509, -0.435614], [+0.99990432, +0.01118145, +0.00485852]], [[-0.23856, -0.002667, +0.012254], [-0.01118145, +0.99991613, -2.717E-5]], [[+0.43573, -0.008541, +0.002117], [-0.00485852, -2.716E-5, +0.99996684]]]];
@@ -20361,7 +20367,7 @@
             let dr: number;
             let b: number;
             let db: number;
-            const rm: number[][] = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+            const rm: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             t = ((date1 - TSOFA.DJ00_$LI$()) + date2) / TSOFA.DJC_$LI$();
             elp = TSOFA.DD2R_$LI$() * TSOFA.fmod(elp0 + (elp1 + (elp2 + (elp3 + elp4 * t) * t) * t) * t, 360.0);
             delp = TSOFA.DD2R_$LI$() * (elp1 + (elp2 * 2.0 + (elp3 * 3.0 + elp4 * 4.0 * t) * t) * t);
@@ -21850,7 +21856,7 @@
                 if (this.em === undefined) { this.em = 0; }
                 this.v = [0, 0, 0];
                 if (this.bm1 === undefined) { this.bm1 = 0; }
-                this.bpn = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([3, 3]);
+                this.bpn = TSOFA.CreateDimensionalArray([3, 3]);
                 if (this.along === undefined) { this.along = 0; }
                 if (this.phi === undefined) { this.phi = 0; }
                 if (this.xpl === undefined) { this.xpl = 0; }
@@ -21891,7 +21897,7 @@
             constructor() {
                 if (this.bm === undefined) { this.bm = 0; }
                 if (this.dl === undefined) { this.dl = 0; }
-                this.pv = <any> (function(dims) { let allocate = function(dims) { if (dims.length === 0) { return 0; } else { let array = new Array(); for(let i = 0; i < dims[0]; i++) { array.push(allocate(dims.slice(1))); } return array; }}; return allocate(dims);})([2, 3]);
+                this.pv = TSOFA.CreateDimensionalArray([2, 3]);
             }
         }
         Ldbody["__class"] = "TSOFA.Ldbody";
