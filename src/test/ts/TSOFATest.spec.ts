@@ -269,10 +269,9 @@ export class TSOFATest {
  public t_c2ixy() {
             let x: number;
             let y: number;
-            let rc2i: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             x = 5.791308486706011E-4;
             y = 4.020579816732961E-5;
-            rc2i = TSOFA.jauC2ixy(2400000.5, 53736, x, y);
+            const rc2i = TSOFA.jauC2ixy(2400000.5, 53736, x, y);
             this.vvd(rc2i[0][0], 0.9999998323037157, 1.0E-12, "jauC2ixy", "11");
             this.vvd(rc2i[0][1], 5.581526349032241E-10, 1.0E-12, "jauC2ixy", "12");
             this.vvd(rc2i[0][2], -5.791308491611264E-4, 1.0E-12, "jauC2ixy", "13");
@@ -288,11 +287,11 @@ export class TSOFATest {
             let x: number;
             let y: number;
             let s: number;
-            let rc2i: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+            
             x = 5.791308486706011E-4;
             y = 4.020579816732961E-5;
             s = -1.220040848472272E-8;
-            rc2i = TSOFA.jauC2ixys(x, y, s);
+            const rc2i = TSOFA.jauC2ixys(x, y, s);
             this.vvd(rc2i[0][0], 0.9999998323037157, 1.0E-12, "jauC2ixys", "11");
             this.vvd(rc2i[0][1], 5.581984869168499E-10, 1.0E-12, "jauC2ixys", "12");
             this.vvd(rc2i[0][2], -5.791308491611282E-4, 1.0E-12, "jauC2ixys", "13");
@@ -321,14 +320,14 @@ export class TSOFATest {
             let utb: number;
             let xp: number;
             let yp: number;
-            let rc2t: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
+           
             tta = 2400000.5;
             uta = 2400000.5;
             ttb = 53736.0;
             utb = 53736.0;
             xp = 2.55060238E-7;
             yp = 1.860359247E-6;
-            rc2t = TSOFA.jauC2t00a(tta, ttb, uta, utb, xp, yp);
+            const rc2t = TSOFA.jauC2t00a(tta, ttb, uta, utb, xp, yp);
             this.vvd(rc2t[0][0], -0.18103321283071827, 1.0E-12, "jauC2t00a", "11");
             this.vvd(rc2t[0][1], 0.9834769806938458, 1.0E-12, "jauC2t00a", "12");
             this.vvd(rc2t[0][2], 6.555535638688342E-5, 1.0E-12, "jauC2t00a", "13");
@@ -347,14 +346,13 @@ export class TSOFATest {
             let utb: number;
             let xp: number;
             let yp: number;
-            let rc2t: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             tta = 2400000.5;
             uta = 2400000.5;
             ttb = 53736.0;
             utb = 53736.0;
             xp = 2.55060238E-7;
             yp = 1.860359247E-6;
-            rc2t = TSOFA.jauC2t00b(tta, ttb, uta, utb, xp, yp);
+            const rc2t = TSOFA.jauC2t00b(tta, ttb, uta, utb, xp, yp);
             this.vvd(rc2t[0][0], -0.1810332128439679, 1.0E-12, "jauC2t00b", "11");
             this.vvd(rc2t[0][1], 0.9834769806913872, 1.0E-12, "jauC2t00b", "12");
             this.vvd(rc2t[0][2], 6.555565082458416E-5, 1.0E-12, "jauC2t00b", "13");
@@ -373,14 +371,13 @@ export class TSOFATest {
             let utb: number;
             let xp: number;
             let yp: number;
-            let rc2t: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             tta = 2400000.5;
             uta = 2400000.5;
             ttb = 53736.0;
             utb = 53736.0;
             xp = 2.55060238E-7;
             yp = 1.860359247E-6;
-            rc2t = TSOFA.jauC2t06a(tta, ttb, uta, utb, xp, yp);
+            const rc2t = TSOFA.jauC2t06a(tta, ttb, uta, utb, xp, yp);
             this.vvd(rc2t[0][0], -0.18103321283058973, 1.0E-12, "jauC2t06a", "11");
             this.vvd(rc2t[0][1], 0.9834769806938592, 1.0E-12, "jauC2t06a", "12");
             this.vvd(rc2t[0][2], 6.555550962998436E-5, 1.0E-12, "jauC2t06a", "13");
@@ -473,7 +470,6 @@ export class TSOFATest {
             let deps: number;
             let xp: number;
             let yp: number;
-            let rc2t: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             tta = 2400000.5;
             uta = 2400000.5;
             ttb = 53736.0;
@@ -482,7 +478,7 @@ export class TSOFATest {
             dpsi = -9.630909107115582E-6;
             xp = 2.55060238E-7;
             yp = 1.860359247E-6;
-            rc2t = TSOFA.jauC2tpe(tta, ttb, uta, utb, dpsi, deps, xp, yp);
+            const rc2t = TSOFA.jauC2tpe(tta, ttb, uta, utb, dpsi, deps, xp, yp);
             this.vvd(rc2t[0][0], -0.18136779957630295, 1.0E-12, "jauC2tpe", "11");
             this.vvd(rc2t[0][1], 0.9023482206891683, 1.0E-12, "jauC2tpe", "12");
             this.vvd(rc2t[0][2], -0.39099029386410855, 1.0E-12, "jauC2tpe", "13");
@@ -503,7 +499,6 @@ export class TSOFATest {
             let y: number;
             let xp: number;
             let yp: number;
-            let rc2t: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             tta = 2400000.5;
             uta = 2400000.5;
             ttb = 53736.0;
@@ -512,7 +507,7 @@ export class TSOFATest {
             y = 4.020579816732961E-5;
             xp = 2.55060238E-7;
             yp = 1.860359247E-6;
-            rc2t = TSOFA.jauC2txy(tta, ttb, uta, utb, x, y, xp, yp);
+            const rc2t = TSOFA.jauC2txy(tta, ttb, uta, utb, x, y, xp, yp);
             this.vvd(rc2t[0][0], -0.18103321283062793, 1.0E-12, "jauC2txy", "11");
             this.vvd(rc2t[0][1], 0.983476980693852, 1.0E-12, "jauC2txy", "12");
             this.vvd(rc2t[0][2], 6.555551248057666E-5, 1.0E-12, "jauC2txy", "13");
@@ -1153,8 +1148,7 @@ export class TSOFATest {
         }
  @Test()
  public t_num00a() {
-            let rmatn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
-            rmatn = TSOFA.jauNum00a(2400000.5, 53736.0);
+            const rmatn = TSOFA.jauNum00a(2400000.5, 53736.0);
             this.vvd(rmatn[0][0], 0.9999999999536228, 1.0E-12, "jauNum00a", "11");
             this.vvd(rmatn[0][1], 8.836238544090872E-6, 1.0E-12, "jauNum00a", "12");
             this.vvd(rmatn[0][2], 3.830835237722401E-6, 1.0E-12, "jauNum00a", "13");
@@ -1167,8 +1161,7 @@ export class TSOFATest {
         }
  @Test()
  public t_num00b() {
-            let rmatn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
-            rmatn = TSOFA.jauNum00b(2400000.5, 53736);
+            const rmatn = TSOFA.jauNum00b(2400000.5, 53736);
             this.vvd(rmatn[0][0], 0.999999999953607, 1.0E-12, "jauNum00b", "11");
             this.vvd(rmatn[0][1], 8.837746144871248E-6, 1.0E-12, "jauNum00b", "12");
             this.vvd(rmatn[0][2], 3.831488838252203E-6, 1.0E-12, "jauNum00b", "13");
@@ -1181,8 +1174,7 @@ export class TSOFATest {
         }
  @Test()
  public t_num06a() {
-            let rmatn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
-            rmatn = TSOFA.jauNum06a(2400000.5, 53736);
+            const rmatn = TSOFA.jauNum06a(2400000.5, 53736);
             this.vvd(rmatn[0][0], 0.9999999999536228, 1.0E-12, "jauNum06a", "11");
             this.vvd(rmatn[0][1], 8.836241998111535E-6, 1.0E-12, "jauNum06a", "12");
             this.vvd(rmatn[0][2], 3.8308346084152875E-6, 1.0E-12, "jauNum06a", "13");
@@ -1198,11 +1190,10 @@ export class TSOFATest {
             let epsa: number;
             let dpsi: number;
             let deps: number;
-            let rmatn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             epsa = 0.409078976335651;
             dpsi = -9.630909107115582E-6;
             deps = 4.063239174001679E-5;
-            rmatn = TSOFA.jauNumat(epsa, dpsi, deps);
+            const rmatn = TSOFA.jauNumat(epsa, dpsi, deps);
             this.vvd(rmatn[0][0], 0.9999999999536228, 1.0E-12, "jauNumat", "11");
             this.vvd(rmatn[0][1], 8.83623932023625E-6, 1.0E-12, "jauNumat", "12");
             this.vvd(rmatn[0][2], 3.830833447458252E-6, 1.0E-12, "jauNumat", "13");
@@ -1239,8 +1230,7 @@ export class TSOFATest {
         }
  @Test()
  public t_nutm80() {
-            let rmatn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
-            rmatn = TSOFA.jauNutm80(2400000.5, 53736.0);
+            const rmatn = TSOFA.jauNutm80(2400000.5, 53736.0);
             this.vvd(rmatn[0][0], 0.9999999999535, 1.0E-12, "jauNutm80", "11");
             this.vvd(rmatn[0][1], 8.847935789636432E-6, 1.0E-12, "jauNutm80", "12");
             this.vvd(rmatn[0][2], 3.8359065021640195E-6, 1.0E-12, "jauNutm80", "13");
@@ -1401,8 +1391,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pmat00() {
-            let rbp: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
-            rbp = TSOFA.jauPmat00(2400000.5, 50123.9999);
+            const rbp = TSOFA.jauPmat00(2400000.5, 50123.9999);
             this.vvd(rbp[0][0], 0.9999995505175088, 1.0E-12, "jauPmat00", "11");
             this.vvd(rbp[0][1], 8.695405883617885E-4, 1.0E-14, "jauPmat00", "12");
             this.vvd(rbp[0][2], 3.779734722239007E-4, 1.0E-14, "jauPmat00", "13");
@@ -1415,8 +1404,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pmat06() {
-            let rbp: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
-            rbp = TSOFA.jauPmat06(2400000.5, 50123.9999);
+            const rbp = TSOFA.jauPmat06(2400000.5, 50123.9999);
             this.vvd(rbp[0][0], 0.9999995505176007, 1.0E-12, "jauPmat06", "11");
             this.vvd(rbp[0][1], 8.695404617348209E-4, 1.0E-14, "jauPmat06", "12");
             this.vvd(rbp[0][2], 3.779735201865589E-4, 1.0E-14, "jauPmat06", "13");
@@ -1429,8 +1417,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pmat76() {
-            let rmatp: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
-            rmatp = TSOFA.jauPmat76(2400000.5, 50123.9999);
+            const rmatp = TSOFA.jauPmat76(2400000.5, 50123.9999);
             this.vvd(rmatp[0][0], 0.9999995504328351, 1.0E-12, "jauPmat76", "11");
             this.vvd(rmatp[0][1], 8.696632209480961E-4, 1.0E-14, "jauPmat76", "12");
             this.vvd(rmatp[0][2], 3.7791534749598884E-4, 1.0E-14, "jauPmat76", "13");
@@ -1745,8 +1732,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pnm00a() {
-            let rbpn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
-            rbpn = TSOFA.jauPnm00a(2400000.5, 50123.9999);
+            const rbpn = TSOFA.jauPnm00a(2400000.5, 50123.9999);
             this.vvd(rbpn[0][0], 0.9999995832793134, 1.0E-12, "jauPnm00a", "11");
             this.vvd(rbpn[0][1], 8.372384254137809E-4, 1.0E-14, "jauPnm00a", "12");
             this.vvd(rbpn[0][2], 3.639684306407151E-4, 1.0E-14, "jauPnm00a", "13");
@@ -1759,8 +1745,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pnm00b() {
-            let rbpn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
-            rbpn = TSOFA.jauPnm00b(2400000.5, 50123.9999);
+            const rbpn = TSOFA.jauPnm00b(2400000.5, 50123.9999);
             this.vvd(rbpn[0][0], 0.9999995832776208, 1.0E-12, "jauPnm00b", "11");
             this.vvd(rbpn[0][1], 8.372401264429655E-4, 1.0E-14, "jauPnm00b", "12");
             this.vvd(rbpn[0][2], 3.6396916814502716E-4, 1.0E-14, "jauPnm00b", "13");
@@ -1773,8 +1758,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pnm06a() {
-            let rbpn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
-            rbpn = TSOFA.jauPnm06a(2400000.5, 50123.9999);
+            const rbpn = TSOFA.jauPnm06a(2400000.5, 50123.9999);
             this.vvd(rbpn[0][0], 0.9999995832794205, 1.0E-12, "jauPnm06a", "11");
             this.vvd(rbpn[0][1], 8.372382772630962E-4, 1.0E-14, "jauPnm06a", "12");
             this.vvd(rbpn[0][2], 3.639684771140623E-4, 1.0E-14, "jauPnm06a", "13");
@@ -1787,8 +1771,7 @@ export class TSOFATest {
         }
  @Test()
  public t_pnm80() {
-            let rmatpn: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
-            rmatpn = TSOFA.jauPnm80(2400000.5, 50123.9999);
+            const rmatpn = TSOFA.jauPnm80(2400000.5, 50123.9999);
             this.vvd(rmatpn[0][0], 0.9999995831934612, 1.0E-12, "jauPnm80", "11");
             this.vvd(rmatpn[0][1], 8.373654045728124E-4, 1.0E-14, "jauPnm80", "12");
             this.vvd(rmatpn[0][2], 3.639121916933106E-4, 1.0E-14, "jauPnm80", "13");
@@ -1804,11 +1787,10 @@ export class TSOFATest {
             let xp: number;
             let yp: number;
             let sp: number;
-            let rpom: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             xp = 2.55060238E-7;
             yp = 1.860359247E-6;
             sp = -1.3671745807288915E-11;
-            rpom = TSOFA.jauPom00(xp, yp, sp);
+            const rpom = TSOFA.jauPom00(xp, yp, sp);
             this.vvd(rpom[0][0], 0.9999999999999675, 1.0E-12, "jauPom00", "11");
             this.vvd(rpom[0][1], -1.367174580728847E-11, 1.0E-16, "jauPom00", "12");
             this.vvd(rpom[0][2], 2.550602379999972E-7, 1.0E-16, "jauPom00", "13");
@@ -1952,7 +1934,6 @@ export class TSOFATest {
  public t_pvmpv() {
             const a: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             const b: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
-            let amb: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             a[0][0] = 2.0;
             a[0][1] = 2.0;
             a[0][2] = 3.0;
@@ -1965,7 +1946,7 @@ export class TSOFATest {
             b[1][0] = 3.0;
             b[1][1] = 2.0;
             b[1][2] = 1.0;
-            amb = TSOFA.jauPvmpv(a, b);
+            const amb = TSOFA.jauPvmpv(a, b);
             this.vvd(amb[0][0], 1.0, 1.0E-12, "jauPvmpv", "11");
             this.vvd(amb[0][1], -1.0, 1.0E-12, "jauPvmpv", "21");
             this.vvd(amb[0][2], -1.0, 1.0E-12, "jauPvmpv", "31");
@@ -1977,7 +1958,6 @@ export class TSOFATest {
  public t_pvppv() {
             const a: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             const b: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
-            let apb: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             a[0][0] = 2.0;
             a[0][1] = 2.0;
             a[0][2] = 3.0;
@@ -1990,7 +1970,7 @@ export class TSOFATest {
             b[1][0] = 3.0;
             b[1][1] = 2.0;
             b[1][2] = 1.0;
-            apb = TSOFA.jauPvppv(a, b);
+            const apb = TSOFA.jauPvppv(a, b);
             this.vvd(apb[0][0], 3.0, 1.0E-12, "jauPvppv", "p1");
             this.vvd(apb[0][1], 5.0, 1.0E-12, "jauPvppv", "p2");
             this.vvd(apb[0][2], 7.0, 1.0E-12, "jauPvppv", "p3");
@@ -2021,14 +2001,13 @@ export class TSOFATest {
  @Test()
  public t_pvu() {
             const pv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
-            let upv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             pv[0][0] = 126668.59127431607;
             pv[0][1] = 2136.7927168399356;
             pv[0][2] = -245251.23398768302;
             pv[1][0] = -0.004051854035740713;
             pv[1][1] = -0.006253919754866176;
             pv[1][2] = 0.011893537197741076;
-            upv = TSOFA.jauPvu(2920.0, pv);
+            const upv = TSOFA.jauPvu(2920.0, pv);
             this.vvd(upv[0][0], 126656.7598605317, 1.0E-6, "jauPvu", "p1");
             this.vvd(upv[0][1], 2118.5312711557262, 1.0E-8, "jauPvu", "p2");
             this.vvd(upv[0][2], -245216.5048590656, 1.0E-6, "jauPvu", "p3");
@@ -2039,14 +2018,13 @@ export class TSOFATest {
  @Test()
  public t_pvup() {
             const pv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
-            let p: number[] = [0, 0, 0];
             pv[0][0] = 126668.59127431607;
             pv[0][1] = 2136.7927168399356;
             pv[0][2] = -245251.23398768302;
             pv[1][0] = -0.004051854035740713;
             pv[1][1] = -0.006253919754866176;
             pv[1][2] = 0.011893537197741076;
-            p = TSOFA.jauPvup(2920.0, pv);
+            const p = TSOFA.jauPvup(2920.0, pv);
             this.vvd(p[0], 126656.7598605317, 1.0E-12, "jauPvup", "1");
             this.vvd(p[1], 2118.5312711557262, 1.0E-12, "jauPvup", "2");
             this.vvd(p[2], -245216.5048590656, 1.0E-12, "jauPvup", "3");
@@ -2055,7 +2033,6 @@ export class TSOFATest {
  public t_pvxpv() {
             const a: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             const b: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
-            let axb: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             a[0][0] = 2.0;
             a[0][1] = 2.0;
             a[0][2] = 3.0;
@@ -2068,7 +2045,7 @@ export class TSOFATest {
             b[1][0] = 0.0;
             b[1][1] = 2.0;
             b[1][2] = 8.0;
-            axb = TSOFA.jauPvxpv(a, b);
+            const axb = TSOFA.jauPvxpv(a, b);
             this.vvd(axb[0][0], -1.0, 1.0E-12, "jauPvxpv", "p1");
             this.vvd(axb[0][1], -5.0, 1.0E-12, "jauPvxpv", "p2");
             this.vvd(axb[0][2], 4.0, 1.0E-12, "jauPvxpv", "p3");
@@ -2095,7 +2072,6 @@ export class TSOFATest {
  @Test()
  public t_rm2v() {
             const r: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
-            let w: number[] = [0, 0, 0];
             r[0][0] = 0.0;
             r[0][1] = -0.8;
             r[0][2] = -0.6;
@@ -2105,7 +2081,7 @@ export class TSOFATest {
             r[2][0] = 0.6;
             r[2][1] = 0.48;
             r[2][2] = -0.64;
-            w = TSOFA.jauRm2v(r);
+            const w = TSOFA.jauRm2v(r);
             this.vvd(w[0], 0.0, 1.0E-12, "jauRm2v", "1");
             this.vvd(w[1], 1.413716694115407, 1.0E-12, "jauRm2v", "2");
             this.vvd(w[2], -1.8849555921538759, 1.0E-12, "jauRm2v", "3");
@@ -2113,11 +2089,10 @@ export class TSOFATest {
  @Test()
  public t_rv2m() {
             const w: number[] = [0, 0, 0];
-            let r: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             w[0] = 0.0;
             w[1] = 1.41371669;
             w[2] = -1.88495559;
-            r = TSOFA.jauRv2m(w);
+            const r = TSOFA.jauRv2m(w);
             this.vvd(r[0][0], -0.707106778222112, 1.0E-14, "jauRv2m", "11");
             this.vvd(r[0][1], -0.565685427680913, 1.0E-14, "jauRv2m", "12");
             this.vvd(r[0][2], -0.4242640700104211, 1.0E-14, "jauRv2m", "13");
@@ -2157,7 +2132,6 @@ export class TSOFATest {
  public t_rxp() {
             const r: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             const p: number[] = [0, 0, 0];
-            let rp: number[] = [0, 0, 0];
             r[0][0] = 2.0;
             r[0][1] = 3.0;
             r[0][2] = 2.0;
@@ -2170,7 +2144,7 @@ export class TSOFATest {
             p[0] = 0.2;
             p[1] = 1.5;
             p[2] = 0.1;
-            rp = TSOFA.jauRxp(r, p);
+            const rp = TSOFA.jauRxp(r, p);
             this.vvd(rp[0], 5.1, 1.0E-12, "jauRxp", "1");
             this.vvd(rp[1], 3.9, 1.0E-12, "jauRxp", "2");
             this.vvd(rp[2], 7.1, 1.0E-12, "jauRxp", "3");
@@ -2179,7 +2153,6 @@ export class TSOFATest {
  public t_rxpv() {
             const r: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             const pv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
-            let rpv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             r[0][0] = 2.0;
             r[0][1] = 3.0;
             r[0][2] = 2.0;
@@ -2195,7 +2168,7 @@ export class TSOFATest {
             pv[1][0] = 1.5;
             pv[1][1] = 0.2;
             pv[1][2] = 0.1;
-            rpv = TSOFA.jauRxpv(r, pv);
+            const rpv = TSOFA.jauRxpv(r, pv);
             this.vvd(rpv[0][0], 5.1, 1.0E-12, "jauRxpv", "11");
             this.vvd(rpv[1][0], 3.8, 1.0E-12, "jauRxpv", "12");
             this.vvd(rpv[0][1], 3.9, 1.0E-12, "jauRxpv", "21");
@@ -2207,7 +2180,6 @@ export class TSOFATest {
  public t_rxr() {
             const a: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             const b: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
-            let atb: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             a[0][0] = 2.0;
             a[0][1] = 3.0;
             a[0][2] = 2.0;
@@ -2226,7 +2198,7 @@ export class TSOFATest {
             b[2][0] = 3.0;
             b[2][1] = 0.0;
             b[2][2] = 1.0;
-            atb = TSOFA.jauRxr(a, b);
+            const atb = TSOFA.jauRxr(a, b);
             this.vvd(atb[0][0], 20.0, 1.0E-12, "jauRxr", "11");
             this.vvd(atb[0][1], 7.0, 1.0E-12, "jauRxr", "12");
             this.vvd(atb[0][2], 9.0, 1.0E-12, "jauRxr", "13");
@@ -2343,8 +2315,7 @@ export class TSOFATest {
         }
  @Test()
  public t_s2pv() {
-            let pv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
-            pv = TSOFA.jauS2pv(-3.21, 0.123, 0.456, -7.8E-6, 9.01E-6, -1.23E-5);
+            const pv = TSOFA.jauS2pv(-3.21, 0.123, 0.456, -7.8E-6, 9.01E-6, -1.23E-5);
             this.vvd(pv[0][0], -0.4514964673880165, 1.0E-12, "jauS2pv", "x");
             this.vvd(pv[0][1], 0.030933942773425867, 1.0E-12, "jauS2pv", "y");
             this.vvd(pv[0][2], 0.05594668105108779, 1.0E-12, "jauS2pv", "z");
@@ -2357,7 +2328,6 @@ export class TSOFATest {
             let s1: number;
             let s2: number;
             const pv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
-            let spv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             s1 = 2.0;
             s2 = 3.0;
             pv[0][0] = 0.3;
@@ -2366,7 +2336,7 @@ export class TSOFATest {
             pv[1][0] = 0.5;
             pv[1][1] = 2.3;
             pv[1][2] = -0.4;
-            spv = TSOFA.jauS2xpv(s1, s2, pv);
+            const spv = TSOFA.jauS2xpv(s1, s2, pv);
             this.vvd(spv[0][0], 0.6, 1.0E-12, "jauS2xpv", "p1");
             this.vvd(spv[0][1], 2.4, 1.0E-12, "jauS2xpv", "p2");
             this.vvd(spv[0][2], -5.0, 1.0E-12, "jauS2xpv", "p3");
@@ -2474,7 +2444,6 @@ export class TSOFATest {
  public t_sxpv() {
             let s: number;
             const pv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
-            let spv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             s = 2.0;
             pv[0][0] = 0.3;
             pv[0][1] = 1.2;
@@ -2482,7 +2451,7 @@ export class TSOFATest {
             pv[1][0] = 0.5;
             pv[1][1] = 3.2;
             pv[1][2] = -0.7;
-            spv = TSOFA.jauSxpv(s, pv);
+            const spv = TSOFA.jauSxpv(s, pv);
             this.vvd(spv[0][0], 0.6, 0.0, "jauSxpv", "p1");
             this.vvd(spv[0][1], 2.4, 0.0, "jauSxpv", "p2");
             this.vvd(spv[0][2], -5.0, 0.0, "jauSxpv", "p3");
@@ -2535,7 +2504,6 @@ export class TSOFATest {
  @Test()
  public t_tr() {
             const r: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
-            let rt: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             r[0][0] = 2.0;
             r[0][1] = 3.0;
             r[0][2] = 2.0;
@@ -2545,7 +2513,7 @@ export class TSOFATest {
             r[2][0] = 3.0;
             r[2][1] = 4.0;
             r[2][2] = 5.0;
-            rt = TSOFA.jauTr(r);
+            const rt = TSOFA.jauTr(r);
             this.vvd(rt[0][0], 2.0, 0.0, "jauTr", "11");
             this.vvd(rt[0][1], 3.0, 0.0, "jauTr", "12");
             this.vvd(rt[0][2], 3.0, 0.0, "jauTr", "13");
@@ -2560,7 +2528,6 @@ export class TSOFATest {
  public t_trxp() {
             const r: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             const p: number[] = [0, 0, 0];
-            let trp: number[] = [0, 0, 0];
             r[0][0] = 2.0;
             r[0][1] = 3.0;
             r[0][2] = 2.0;
@@ -2573,7 +2540,7 @@ export class TSOFATest {
             p[0] = 0.2;
             p[1] = 1.5;
             p[2] = 0.1;
-            trp = TSOFA.jauTrxp(r, p);
+            const trp = TSOFA.jauTrxp(r, p);
             this.vvd(trp[0], 5.2, 1.0E-12, "jauTrxp", "1");
             this.vvd(trp[1], 4.0, 1.0E-12, "jauTrxp", "2");
             this.vvd(trp[2], 5.4, 1.0E-12, "jauTrxp", "3");
@@ -2582,7 +2549,6 @@ export class TSOFATest {
  public t_trxpv() {
             const r: number[][] = TSOFA.CreateDimensionalArray([3, 3]);
             const pv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
-            let trpv: number[][] = TSOFA.CreateDimensionalArray([2, 3]);
             r[0][0] = 2.0;
             r[0][1] = 3.0;
             r[0][2] = 2.0;
@@ -2598,7 +2564,7 @@ export class TSOFATest {
             pv[1][0] = 1.5;
             pv[1][1] = 0.2;
             pv[1][2] = 0.1;
-            trpv = TSOFA.jauTrxpv(r, pv);
+            const trpv = TSOFA.jauTrxpv(r, pv);
             this.vvd(trpv[0][0], 5.2, 1.0E-12, "jauTrxpv", "p1");
             this.vvd(trpv[0][1], 4.0, 1.0E-12, "jauTrxpv", "p1");
             this.vvd(trpv[0][2], 5.4, 1.0E-12, "jauTrxpv", "p1");
