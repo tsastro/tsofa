@@ -1805,7 +1805,7 @@ export class TSOFATest {
             for(let index = 0; index < vec2.length; index++) {
                 let d = vec2[index];
                 {
-                    console.info(d);
+                    //console.info(d);
                 }
             }
         }
