@@ -3,7 +3,6 @@ import { expect, test } from '@jest/globals';
 import {TSOFA} from "../../main/ts/TSOFA"
 import {TSOFAInternalError} from "../../main/ts/TSOFAInternalError";
 import {TSOFAIllegalParameter} from "../../main/ts/TSOFAIllegalParameter";
-import { TSOFAException } from '../../main/ts/TSOFAException';
 
 
 
@@ -87,12 +86,12 @@ test("t_a2af", () => {
 test("t_a2tf", () => {
             const ihmsf: number[] = [0, 0, 0, 0];
             let s: string;
-            s = TSOFA.jauA2tf(4, -3.01234, ihmsf);
+            s = TSOFA.jauA2tf(11, -3.01234, ihmsf);
             viv((s).charCodeAt(0), ('-').charCodeAt(0), "jauA2tf", "s");
             viv(ihmsf[0], 11, "jauA2tf", "0");
             viv(ihmsf[1], 30, "jauA2tf", "1");
             viv(ihmsf[2], 22, "jauA2tf", "2");
-            viv(ihmsf[3], 6484, "jauA2tf", "3");
+            viv(ihmsf[3], 64843002522, "jauA2tf", "3");
         });
 test("t_anp", () => {
             vvd(TSOFA.jauAnp(-0.1), 6.183185307179587, 1.0E-12, "jauAnp", "");
@@ -554,12 +553,12 @@ test("t_cr", () => {
 test("t_d2tf", () => {
             const ihmsf: number[] = [0, 0, 0, 0];
             let s: string;
-            s = TSOFA.jauD2tf(4, -0.987654321, ihmsf);
+            s = TSOFA.jauD2tf(9, -0.987654320601852, ihmsf);
             viv((s).charCodeAt(0), ('-').charCodeAt(0), "jauD2tf", "s");
             viv(ihmsf[0], 23, "jauD2tf", "0");
             viv(ihmsf[1], 42, "jauD2tf", "1");
             viv(ihmsf[2], 13, "jauD2tf", "2");
-            viv(ihmsf[3], 3333, "jauD2tf", "3");
+            viv(ihmsf[3], 333300000, "jauD2tf", "3");
         });
 test("t_dat", () => {
             let deltat: number;
@@ -1685,7 +1684,7 @@ test("t_pom00", () => {
             for(let index = 0; index < vec2.length; index++) {
                 let d = vec2[index];
                 {
-                    console.info(d);
+                    //console.info(d);
                 }
             }
         });

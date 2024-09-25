@@ -1918,7 +1918,7 @@
             ly = ((im === 2) && (iy % 4 === 0) && (iy % 100 !== 0 || (iy % 400 === 0))) ? 1 : 0;
             if ((id < 1) || (id > (mtab[im - 1] + ly))){
             } //TODO compare to original
-            my = ((im - 14) / 12|0);
+            my = Math.trunc((im - 14) / 12);
             iypmy = (n => n<0?Math.ceil(n):Math.floor(n))(<number>(iy + my));
             djm0 = TSOFA.DJM0_$LI$();
             djm = <number>((n => n<0?Math.ceil(n):Math.floor(n))((1461 * (iypmy + 4800)) / 4) + (n => n<0?Math.ceil(n):Math.floor(n))((367 * (n => n<0?Math.ceil(n):Math.floor(n))(<number>(im - 2 - 12 * my))) / 12) - (n => n<0?Math.ceil(n):Math.floor(n))((3 * ((n => n<0?Math.ceil(n):Math.floor(n))((iypmy + 4900) / 100))) / 4) + (n => n<0?Math.ceil(n):Math.floor(n))(<number>id) - 2432076);
@@ -2108,10 +2108,10 @@
             as = a / rs;
             as = TSOFA.dint(as);
             af = a - as * rs;
-            ihmsf[0] = (<number>ah|0);
-            ihmsf[1] = (<number>am|0);
-            ihmsf[2] = (<number>as|0);
-            ihmsf[3] = (<number>af|0);
+            ihmsf[0] = Math.trunc(ah);
+            ihmsf[1] = Math.trunc(am);
+            ihmsf[2] = Math.trunc(as);
+            ihmsf[3] = Math.trunc(af);
             return sign;
         }
 
@@ -3711,12 +3711,12 @@
             const cs0: number[][] = [TSOFA.SSB.s0x_$LI$(), TSOFA.SSB.s0y_$LI$(), TSOFA.SSB.s0z_$LI$()];
             const cs1: number[][] = [TSOFA.SSB.s1x_$LI$(), TSOFA.SSB.s1y_$LI$(), TSOFA.SSB.s1z_$LI$()];
             const cs2: number[][] = [TSOFA.SSB.s2x_$LI$(), TSOFA.SSB.s2y_$LI$(), TSOFA.SSB.s2z_$LI$()];
-            const ne0: number[] = [(TSOFA.Ephemeris.e0x_$LI$().length / 3|0), (TSOFA.Ephemeris.e0y_$LI$().length / 3|0), (TSOFA.Ephemeris.e0z_$LI$().length / 3|0)];
-            const ne1: number[] = [(TSOFA.Ephemeris.e1x_$LI$().length / 3|0), (TSOFA.Ephemeris.e1y_$LI$().length / 3|0), (TSOFA.Ephemeris.e1z_$LI$().length / 3|0)];
-            const ne2: number[] = [(TSOFA.Ephemeris.e2x_$LI$().length / 3|0), (TSOFA.Ephemeris.e2y_$LI$().length / 3|0), (TSOFA.Ephemeris.e2z_$LI$().length / 3|0)];
-            const ns0: number[] = [(TSOFA.SSB.s0x_$LI$().length / 3|0), (TSOFA.SSB.s0y_$LI$().length / 3|0), (TSOFA.SSB.s0z_$LI$().length / 3|0)];
-            const ns1: number[] = [(TSOFA.SSB.s1x_$LI$().length / 3|0), (TSOFA.SSB.s1y_$LI$().length / 3|0), (TSOFA.SSB.s1z_$LI$().length / 3|0)];
-            const ns2: number[] = [(TSOFA.SSB.s2x_$LI$().length / 3|0), (TSOFA.SSB.s2y_$LI$().length / 3|0), (TSOFA.SSB.s2z_$LI$().length / 3|0)];
+            const ne0: number[] = [Math.trunc(TSOFA.Ephemeris.e0x_$LI$().length / 3), Math.trunc(TSOFA.Ephemeris.e0y_$LI$().length / 3), Math.trunc(TSOFA.Ephemeris.e0z_$LI$().length / 3)];
+            const ne1: number[] = [Math.trunc(TSOFA.Ephemeris.e1x_$LI$().length / 3), Math.trunc(TSOFA.Ephemeris.e1y_$LI$().length / 3), Math.trunc(TSOFA.Ephemeris.e1z_$LI$().length / 3)];
+            const ne2: number[] = [Math.trunc(TSOFA.Ephemeris.e2x_$LI$().length / 3), Math.trunc(TSOFA.Ephemeris.e2y_$LI$().length / 3), Math.trunc(TSOFA.Ephemeris.e2z_$LI$().length / 3)];
+            const ns0: number[] = [Math.trunc(TSOFA.SSB.s0x_$LI$().length / 3), Math.trunc(TSOFA.SSB.s0y_$LI$().length / 3), Math.trunc(TSOFA.SSB.s0z_$LI$().length / 3)];
+            const ns1: number[] = [Math.trunc(TSOFA.SSB.s1x_$LI$().length / 3), Math.trunc(TSOFA.SSB.s1y_$LI$().length / 3), Math.trunc(TSOFA.SSB.s1z_$LI$().length / 3)];
+            const ns2: number[] = [Math.trunc(TSOFA.SSB.s2x_$LI$().length / 3), Math.trunc(TSOFA.SSB.s2y_$LI$().length / 3), Math.trunc(TSOFA.SSB.s2z_$LI$().length / 3)];
             let nterms: number;
             let jstat: number;
             let i: number;
@@ -6402,10 +6402,10 @@
             i = (n => n<0?Math.ceil(n):Math.floor(n))((4000 * (l + 1)) / 1461001);
             l -= (n => n<0?Math.ceil(n):Math.floor(n))((1461 * i) / 4) - 31;
             k = (n => n<0?Math.ceil(n):Math.floor(n))((80 * l) / 2447);
-            const id: number = (<number>(l - (n => n<0?Math.ceil(n):Math.floor(n))((2447 * k) / 80))|0);
+            const id: number = Math.trunc((l - (n => n<0?Math.ceil(n):Math.floor(n))((2447 * k) / 80)));
             l = (n => n<0?Math.ceil(n):Math.floor(n))(k / 11);
-            const im: number = (<number>(k + 2 - 12 * l)|0);
-            const iy: number = (<number>(100 * (n - 49) + i + l)|0);
+            const im: number = Math.trunc((k + 2 - 12 * l));
+            const iy: number = Math.trunc((100 * (n - 49) + i + l));
             return new TSOFA.Calendar(iy, im, id, f);
         }
 
@@ -6530,7 +6530,7 @@
                 iymdf[0] = cal.iy;
                 iymdf[1] = cal.im;
                 iymdf[2] = cal.id;
-                iymdf[3] = (<number>TSOFA.dnint(cal.fd * denom)|0);
+                iymdf[3] = Math.trunc(TSOFA.dnint(cal.fd * denom));
             } catch(e) {
                 j = -1;
             }
