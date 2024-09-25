@@ -1,5 +1,5 @@
- import { TSOFAIllegalParameter } from "./TSOFAIllegalParameter";
- import { TSOFAInternalError } from "./TSOFAInternalError";
+ import { TSOFAIllegalParameter } from "./TSOFAIllegalParameter.js";
+ import { TSOFAInternalError } from "./TSOFAInternalError.js";
     /**
      * Typescript implementation of Standards of Fundamental Astronomy. <a href="http://www.iausofa.org/">http://www.iausofa.org/</a>
      * 
