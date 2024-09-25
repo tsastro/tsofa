@@ -1,12 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es6",
+    "module": "ESNext",
+    "target": "ES2020",
     "declaration": true,
     "sourceMap": true,
+    "declarationMap": true,
+    "strict": true,
+    "moduleResolution": "Node",
     "experimentalDecorators": true,
-    "lib": [ "es6" ] ,  
     "outDir": "./dist"
   },
   "include": [
