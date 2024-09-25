@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 3.1.0 - http://www.jsweet.org */
- import { TSOFAException } from "./TSOFAException";
+ import { TSOFAException } from "./TSOFAException.js";
     /**
      * Exception signalling a internal error.
      * .

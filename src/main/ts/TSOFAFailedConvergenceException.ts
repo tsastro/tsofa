@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 3.1.0 - http://www.jsweet.org */
  
- import { TSOFAException } from "./TSOFAException";
+ import { TSOFAException } from "./TSOFAException.js";
     /**
      * Exception reporting some form of convergence failure in an algorithm.
      * @param {string} message
