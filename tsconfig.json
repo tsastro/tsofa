@@ -1,18 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Node 22",
+  "_version": "22.4.0",
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "ES2020",
+    "module": "NodeNext",
+    "target":"ES2020",
     "declaration": true,
     "sourceMap": true,
-    "declarationMap": true,
+    "allowJs": true,
     "esModuleInterop": true,
-    "strict": false,
-    "moduleResolution": "Node",
-    "experimentalDecorators": true,
+    "moduleResolution": "NodeNext",
+    "isolatedModules": true,
     "outDir": "./dist"
   },
-  "include": [
-    "src/main/ts/**/*"
-  ]
+  "include": ["src/main/ts/**/*"]
 }
