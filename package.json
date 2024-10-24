@@ -21,9 +21,6 @@
         "type": "git",
         "url": "git+https://github.com/tsastro/tsofa.git"
     },
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com"
-    },
     "keywords": [
         "Astrometry",
         "Astronomy"
